@@ -18,3 +18,30 @@ Die Handouts sind so mehr oder weniger erfolgreich zur Frontalbespaßung
 benutzt worden - mit Ausnahme des Handouts zur Fourieranalysis. Dieses ist
 in der Entwicklung und wird ganz bestimmt bald irgendwann [tm]
 fertiggeschrieben.
+
+PDFs erzeugen
+-------------
+
+Einfach
+
+::
+
+  make
+
+im Hauptverzeichnis tippen.
+
+Abhängigkeiten
+--------------
+
+Das Makefile setzt pdflatex voraus. Außerdem werden bestimmt viele LaTeX-Pakete
+benutzt, die man auf jeden Fall verfügbar hat, wenn man TeXlive in einer
+Komplettinstallation benutzt.
+
+Hinweis
+-------
+
+Mein sehr nützliches, in Sachen Optionen etwas bug-behaftetes und schlecht
+dokumentiertes `Mathe-Concenience Paket simpleMath  gibt es auch auf Github,
+ist aber auch als Teil dieses Repositoriums zu finden.
+
+
