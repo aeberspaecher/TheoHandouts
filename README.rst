@@ -33,15 +33,16 @@ im Hauptverzeichnis tippen.
 Abhängigkeiten
 --------------
 
-Das Makefile setzt pdflatex voraus. Außerdem werden bestimmt viele LaTeX-Pakete
-benutzt, die man auf jeden Fall verfügbar hat, wenn man TeXlive in einer
-Komplettinstallation benutzt.
+Das Makefile setzt pdflatex voraus. Außerdem werden bestimmt viele
+LaTeX-Pakete benutzt, die man auf jeden Fall verfügbar hat, wenn man TeXlive_
+in einer Komplettinstallation benutzt.
+
+.. _TeXlive: http://www.tug.org/texlive/
 
 Hinweis
 -------
 
 Mein sehr nützliches, in Sachen Optionen etwas bug-behaftetes und schlecht
-dokumentiertes `Mathe-Concenience Paket simpleMath  gibt es auch auf Github,
-ist aber auch als Teil dieses Repositoriums zu finden.
-
-
+dokumentiertes `Mathe-Convenience Paket simpleMath
+<https://github.com/aeberspaecher/simpleMath>`_ gibt es auch auf Github, ist
+aber auch als Teil dieses Repositoriums zu finden.
