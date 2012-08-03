@@ -1,0 +1,275 @@
+\documentclass[paper=a4, fontsize=11.0pt, abstractoff, DIV12]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel} % deutsche Rechtschreibung
+
+\usepackage{graphicx} % Grafiken einbinden
+\usepackage{amsmath} % AMS! Wichtig!
+\usepackage{amsfonts} % mehr AMS
+\usepackage{amssymb} % noch viel mehr
+\usepackage[amssymb]{SIunits} % Einheiten anständig setzen
+\usepackage{bbm} % fetter gedrucktes verfügbar machen, z.B. \mathbbm{1} = Eins mit Doppelstrich
+\usepackage{nicefrac}
+\usepackage[square, Euler, newVec]{simpleMath}
+\usepackage{tikz}
+\usepackage{marvosym}
+\usepackage{hyperref}
+\hypersetup{colorlinks,
+            breaklinks=true,
+            linkcolor=black,
+            urlcolor=black,
+            citecolor=black,
+            bookmarksnumbered,
+            pdfauthor={Alexander Eberspächer},
+            pdftitle={Übungen Theoretische Physik}}
+
+\title{Schnellkurs Fourieranalysis}
+\author{Alexander Eberspächer}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Im Schnelldurchlauf wollen wir die Fourieranalysis angehen. Neben Fourierreihen
+sollen die diskrete Fouriertransformation sowie die kontinuierliche
+Fouriertransformation kurz vorgestellt werden.
+\\[0.5ex]
+Literatur/Quelle: kondensiert aus Arfken\&Weber \cite{Arfken}.
+\end{abstract}
+
+\section{Fourierreihen}
+
+\subsection{Definition}
+
+Periodische Funktionen $f(x)$ (vgl. Wellen und harmonnische Schwingungen)
+lassen sich in eine sogenannte Fourierreihe entwicklen:
+
+\begin{equation}
+f(x) = \frac{a_0}{2}+\sum\limits_{n=1}^{\infty}a_n\cos(nx) + \sum\limits_{n=1}^{\infty}b_n\sin(nx)\,,
+\end{equation}
+wobei die Entwicklungskoeffizienten $a_n$ und $b_n$ durch
+\begin{align}
+a_n &= \frac{1}{\pi}\int\limits_{0}^{2\pi}f(x)\cos(nx)\,\dd x\\
+b_n &= \frac{1}{\pi}\int\limits_{0}^{2\pi}f(x)\sin(nx)\,\dd x
+\end{align}
+mit $n=0,1,2,\dots$ gegeben sind. Diese Reihen konvergieren für auf $[0;2\pi]$
+periodische Funktionen $f(x)$ gegen $f(x)$ falls $f(x)$ ``gutmütig'' ist
+(hier: endliche Anzahl von Sprungstellen und Extremwerten).
+
+\subsection{Idee hinter Fourierreihen}
+
+Eine Schwingung $f(x)$ wird ein Bestandteile diskreter Frequenz zerlegt. In der
+Akustik kennen Sie das als Obertöne. Die Entwickluing funktioniert, weil
+die Sinus- und Kosinusfunktionen orthogonal sind:
+
+\begin{align}
+\int\limits_{0}^{2\pi} \sin(nx)\cos(mx)\,\dd x&=0\,,\\
+\int\limits_{0}^{2\pi} \sin(nx)\sin(mx)\,\dd x &= \left\{\begin{array}{lr}\pi\delta_{mn}&\qquad m\ne 0\\0&\qquad m=0\end{array}\right.\,,\\
+\int\limits_{0}^{2\pi} \cos(nx)\cos(mx)\,\dd x&= \left\{\begin{array}{lr}\pi\delta_{mn}&\qquad m\ne 0\\2\pi&\qquad m=n=0\end{array}\right.\,,\\
+\end{align}
+
+Diese Funktionen sind Eigenfunktionen zum Sturm-Liouville-Problem
+\begin{equation*}
+y'' + n^2 y = 0\,.
+\end{equation*}
+
+Die Entwicklung ist damit wie schon die Entwicklung nach Legendre-Polynomen
+eine Entwickung nach \emph{orthogonalen Funktionen}. Die Koeffizienten
+$\left\{\begin{array}{c}a_n\\b_n\end{array}\right\}$ sind damit die
+Projektionen von $f(x)$ auf die Basisfunktionen
+$\left\{\begin{array}{c}\cos(nx)\\\sin(nx)\end{array}\right\}$.
+
+\subsection{Komplexe Darstellung}
+
+Mit der Eulerformel $\eto{\ii nx} = \cos(nx)+\ii\sin(nx)$ ergibt sich die
+komplexe Darstellung
+\begin{equation}
+f(x) = \sum\limits_{n=-\infty}^{+\infty}c_n\eto{\ii nx}\,,
+\end{equation}
+wobei für $n> 0$
+\begin{align}
+c_n &= \frac{1}{2}(a_n - \ii b_n)\\
+c_{-n} &= \frac{1}{2}(a_n + \ii b_n)
+\end{align}
+gilt. Für $n=0$ ist
+\begin{equation}
+c_0 = \frac{1}{2}a_0\,.
+\end{equation}
+Die Formel für $c_n$ ergibt sich unter der Verwenug der Linearität des
+Integrals und der Eulerformel explizit zu
+\begin{align}
+c_n &= \frac{1}{2\pi}\left[ \int\limits_{0}^{2\pi} f(x)\left(\cos(nx) - \ii \sin(nx)\right)\,\dd x\right]\nonumber\\
+&=\frac{1}{2\pi}\int\limits_{0}^{2\pi} f(x) \eto{-\ii nx}\,\dd x\, .
+\label{eq:cn}
+\end{align}
+
+\Stopsign\hspace{1ex}In der komplexen Darstellung müssen wir für alle
+Projektionen ein komplexes Skalarprodukt verwenden! Hier brauchen wir
+komplexe Konjugation -- das Skalarprodukt der Basisfunktionen, die mit $n$
+beziehungsweise $m$ indiziert werden ist dann\footnote{TODO: Physiker-Konvention...}
+\begin{align}
+\left<n,m\right> &= \int\limits_{0}^{2\pi}\left(\eto{\ii nx}\right)^*\eto{\ii mx} \,\dd x\\
+& \left( =  \int\limits_{0}^{2\pi} \eto{\ii (m-n)x}\,\dd x = 2\pi \delta_{mn}\right)\,.\nonumber
+\end{align}
+Die Projektion $c_n = \left<n,f\right>$ von $f$ auf die Basisfunktion
+$\eto{\ii n x}$ benötigt dann die komplexe Konjugation der Basisfunktion,
+was das Minuszeichen im Exponenten von \eqref{eq:cn} im Rahmen einer
+geometrischen Interpretation erklärt.
+
+\subsection{Funktionen mit anderer Periodizität}
+
+Bisher haben wir die Periode $2\pi$ für unsere Funktion $f$ angenommen. Auch
+möglich ist jede andere Periode; beispielweise die Periode $2L$. In diesem Fall
+lautet die Fourierreihe
+\begin{align}
+f(x) = \frac{a_0}{2} + \sum\limits_{n=1}^{\infty}\left[a_n \cos\left(\frac{n\pi}{L}x\right) + b_n \sin\left(\frac{n\pi}{L}x\right)\right]\,,
+\end{align}
+die Entwicklungskoeffizienten sind in diesem Fall
+\begin{align}
+a_n &= \frac{1}{L}\int\limits_{-L}^{+L} f(t) \cos\left(\frac{n\pi}{L}x\right)\,\dd t\quad&n=0,1,2,\dots\\
+b_n &= \frac{1}{L}\int\limits_{-L}^{+L} f(t) \sin\left(\frac{n\pi}{L}x\right)\,\dd t\quad&n=1,2,\dots
+\end{align}
+oder in komplexer Darstellung
+\begin{align}
+c_n = \frac{1}{L}\int\limits_{-L}^{+L} f(t) \eto{-\ii n x}\,\dd t\qquad&n=0,1,2,\dots\\
+\end{align}
+
+Das Intervall auf, dem $f$ periodisch ist muss dabei nicht wie $[-L;+L]$
+symmetrisch sein, jedes Intervall $[x_0; x_0+2L]$ ist in Ordnung.
+
+\subsection{Beispiel}
+
+TODO
+
+\section{Diskrete Fouriertransformation}
+
+Messdaten oder vom Computer erzeugte Daten liegen in der Regel nicht als
+kontinuierliche Daten, sondern sind stattdessen als diskrete Punktmenge
+gegeben. Für diese Fall wollen wir die sogenannte \emph{diskrete
+Fouriertransformation} (DFT) einführen.
+
+\subsection{Orthogonalität im diskreten Fall}
+
+Für diskrete Daten müssen wir unseren Begriff von Orthogonalität neu fassen.
+Aus den Integralen in den Skalarprodukten müssen Summen werden.
+
+Wir betrachten Daten $f(t_k)$, die im Intervall $[0;T]$ für die $2N$ Zeiten
+\begin{align}
+t_k &= 0, \frac{T}{2N}, \frac{2T}{2N},\dots,\frac{(2N-1)T}{2N}\nonumber\\
+&:=\frac{T}{2N}k\qquad\quad k=0,\dots,2N-1
+\end{align}
+aufgenommen sind. Wir wollen nun die Orthogonalität von
+\begin{align*}
+\eto{2\pi \ii p t_k/T}\\
+\intertext{und}
+\eto{2\pi \ii q t_k/T}
+\end{align*}
+zeigen, wobei $p$ und $q$ ganze Zahlen sein sollen. Wir ersetzen im Skalarprodukt
+das Integral durch eine Summe und erhalten mit $s:=q-p$
+\begin{align}
+\sum\limits_{k=0}^{2N-1}\left[\exp{\left(\frac{2\pi\ii pt_k}{T}\right)} \right]^* \exp{\left(\frac{2\pi\ii pt_k}{T}\right)} &= \sum\limits_{k=0}^{2N-1}\exp{\left(\frac{2\pi\ii st_k}{T}\right)}\\
+&=\sum\limits_{k=0}^{2N-1}\exp{\left(\frac{2\pi\ii sk}{2N}\right)}\,,
+\end{align}
+wobei im letzten Schritt die Definition von $t_k$ eingesetzt wurde. Dieser
+Ausdruck ist eine endliche geometrische Reihe mit $2N$ Gliedern, deren
+Partialsumme $s_{2N}$ sich mit $r=\eto{2\pi\ii s}$ zu
+\begin{equation}
+s_{2N} = \left\{ \begin{array}{lr}\frac{1-r^{2N}}{1r}  & \quad r\ne 1\quad (s\ne 0 \leftrightarrow p \ne q)\\2N &\quad r=1\quad(s = 0 \leftrightarrow p = q)\end{array}\right.
+\end{equation}
+berechnet\footnote{TODO}. Damit lautet die Orthogonalitätsrelation für die
+Basisfunktionen $p$ und $q$ im diskreten Fall
+\begin{align}
+\left<p,q\right>=\sum\limits_{k=0}^{2N-1} \left[\exp\left(\frac{2\pi\ii pt_k}{T}\right)\right]^*\exp\left(\frac{2\pi\ii qt_k}{T}\right) = 2N\delta_{p,q\pm 2nN}
+\label{eq:diskOrth}
+\end{align}
+mit ganzzahligen $p,q,n$.
+
+\subsection{Die DFT}
+
+wir definieren zunächst die Frequenzen
+\begin{equation}
+\omega_p = \frac{2\pi p }{T}\qquad p=0,1,\dots,2N-1\,.
+\end{equation}
+Die Exponentialterme sind damit also
+\begin{equation*}
+\eto{\pm 2\pi\ii pt_k} = \eto{\pm \omega_p t_k}\,.
+\end{equation*}
+Die Orthogonalitätsrelation schreibt sich dann als
+\begin{equation}
+\sum\limits_{k=0}^{2N-1} \left(\eto{\ii \omega_p t_k}\right)^* \eto{\ii \omega_q t_k} = 2N\delta_{q,p+2Nn}\,.
+\end{equation}
+Für eine Funktion $f(t_k)$ definieren wir nun
+\begin{equation}
+F(\omega_p) = \frac{1}{2N}\sum\limits_{k=0}^{2N-1}f(t_k)\eto{\ii\omega_pt_k}
+\label{eq:DFT}
+\end{equation}
+als die sogenannte \emph{diskrete Fouriertransformation} von $f(t_k)$.
+
+\subsubsection{Inverse DFT}
+
+Um die inverse Transformation abzuleiten, multiplizieren wir zunächst \eqref{eq:DFT}
+mit $\left(\eto{\ii\omega_p t_q}\right)^*$ und summieren über $p$. Es ergibt sich
+\begin{align}
+\sum\limits_{p=0}^{2N-1}F(\omega_p)\left(\eto{\ii\omega_p t_q}\right)^* &= \frac{1}{2N} \sum\limits_{p=0}^{2N-1} \left(\eto{\ii\omega_p t_q}\right)^* \sum\limits_{k=0}^{2N-1}f(t_k) \eto{\ii\omega_p t_q}\nonumber\\
+&=\sum\limits_{k=0}^{2N-1}f(t_k) \underbrace{\frac{1}{2N}\sum\limits_{p=0}^{2N-1}\left(\eto{\ii\omega_p t_q}\right)^*\eto{\ii\omega_p t_k} }_{=\delta_{qk}}\,,
+\end{align}
+was wie angedeuet mit der Orthogonalitätsrelation \eqref{eq:diskOrth} die inverse Transformation
+\begin{align}
+\sum\limits_{p=0}^{2N-1}F(\omega_p)\eto{-\ii\omega_p t_q} &= f(t_k)
+\end{align}
+ergibt.
+
+Beide Richtungen dieser Transformation sind in allen Computer-Bibliotheken
+und Routinen zur \emph{schnellen Fouriertransformation} (FFT) implementiert.
+
+\subsubsection{Interpretation und Parseval-Theorem}
+
+Die Werte $F(\omega_p)$ interpretieren sich als Beitrag  von
+$\eto{\ii\omega_p t_k}$ zum Signal $f(t_k)$. Weiterhin gilt das
+Parseval-Theorem:
+\begin{align}
+\frac{1}{2N}\su{k=0}{2N-1}\abs{f(t_k)}^2 = \su{k=0}{2N-1}\abs{F(\omega_k)}^2\,.
+\end{align}
+Die linke Seite steht für die summierte Energie im ``Zeitbereich'', die
+rechte Seite hingegen steht für die gesamte Energie im ``Frequenzbereich''.
+Die Parseval-Relation drückt also aus, dass die Energie unabhängig von der
+gewählten Darstellung (Zeit/Frequenz) ist. Mathematisch spiegelt sich das in
+Unitarität der DFT -- die Länge eines Vektors hängt nicht von der gewählten
+Basis ab.
+
+\section{Von Fourierreihen zur Fouriertransformation}
+
+Für auf $[-L;+L]$ periodische Funktionen haben wir Fourierreihen
+kennengelernt, dort waren die Koeffizienten vor den Kosinus-/Sinus-Basisfunktionen
+\begin{align*}
+a_n &= \frac{1}{L}\inte{-L}{+L} f(t) \cos\left(\frac{n\pi t}{L}\right)\,\dd t\\
+b_n &= \frac{1}{L}\inte{-L}{+L} f(t) \sin\left(\frac{n\pi t}{L}\right)\,\dd t\,.
+\end{align*}
+
+Damit können wir den den Übergang zu Funktionen mit ``unendlicher Periode''
+vorbereiten. Wir setzen zunächst die Koeffizienten in die Fourierreihe ein
+und erhalten
+\begin{align}
+f(x) &= \underbrace{\frac{1}{2L} \inte{-L}{+L}f(t)\,\dd t}_{a_0} + \frac{1}{L}\su{n=1}{+\infty}\cos\left(\frac{n\pi x}{L}\right)\underbrace{\inte{-L}{+L}f(t)\cos\left(\frac{n \pi x}{L}\right)\,\dd t}_{a_n} \nonumber\\ &\quad + \frac{1}{L}\su{n=1}{+\infty}\sin\left(\frac{n\pi x}{L}\right)\underbrace{\inte{-L}{+L}f(t)\sin\left(\frac{n \pi x}{L}\right)\,\dd t}_{b_n}\,.
+\end{align}
+
+Nutzt man hier die Linearität des Integrals sowie die trigonometrischen
+Relationen
+\begin{align*}
+bla
+\end{align*}
+
+
+\section{Integraltransformationen und die Fouriertransformation als Spezialfall}
+
+\subsection{Spezielle Eigenschaften der Fouriertransformation}
+
+\nocite{*}
+
+\bibliographystyle{ieeetr}
+
+\bibliography{EDyn-Fourieranalysis}
+
+
+\end{document}
+
+

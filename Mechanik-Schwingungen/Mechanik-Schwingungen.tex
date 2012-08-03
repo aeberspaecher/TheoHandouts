@@ -1,0 +1,572 @@
+\documentclass[paper=a4, fontsize=11.0pt, abstractoff, DIV12]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel} % deutsche Rechtschreibung
+
+\usepackage{graphicx} % Grafiken einbinden
+\usepackage{amsmath} % AMS! Wichtig!
+\usepackage{amsfonts} % mehr AMS
+\usepackage{amssymb} % noch viel mehr
+\usepackage[amssymb]{SIunits} % Einheiten anständig setzen
+\usepackage{bbm} % fetter gedrucktes verfügbar machen, z.B. \mathbbm{1} = Eins mit Doppelstrich
+\usepackage[square, Euler, newVec]{simpleMath}
+\usepackage{tikz}
+\usepackage{hyperref}
+\hypersetup{colorlinks,
+            breaklinks=true,
+            linkcolor=black,
+            urlcolor=black,
+            citecolor=black,
+            bookmarksnumbered,
+            pdfauthor={Alexander Eberspächer},
+            pdftitle={Seminar Theoretische Physik}}
+
+
+% define cool colorbox. two arguments: one for title (in bold), the other for the box content.
+% Define box and box title style
+\tikzstyle{mybox} = [draw=black, fill=white, thin,
+    rectangle, rounded corners, inner sep=1ex, inner ysep=2.2ex]
+\tikzstyle{fancytitle} =[fill=white, text=black]
+
+\newcommand{\cbox}[2]{
+\begin{center}
+
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.95\textwidth}
+        #2
+    \end{minipage}
+};
+\node[fancytitle, right=1em] at (box.north west) {\textbf{\textsf{#1}}};
+\end{tikzpicture}%
+\end{center}
+} % end newcommand
+
+\title{Schwingungstheorie}
+\author{Alexander Eberspächer}
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Als Ergänzung zur Vorlesung wird eine allgemeine Theorie für kleine lineare
+Schwingungen um einen Gleichgewichtspunkt entwickelt. Beliebig viele
+Freiheitsgrade werden diskutiert. Außerdem werden sogenannte
+Normalschwingungen beschrieben.
+\end{abstract}
+
+\section{Einleitung - Schwingungen in einem Freiheitsgrad}
+
+Im Folgenden wollen wir Schwingungen etwas näher betrachten. Im Fall von
+einem Teilchen, das sich in einer Dimension in einem Parabelpotential
+\begin{equation}
+V(q) = \frac{1}{2} m \omega^2 q^2
+\label{eq:Pot}
+\end{equation}
+bewegt, erhalten wir die Schwingungsdifferentialgleichung
+\begin{equation}
+\ddot{q}(t) + \omega^2 q(t) = 0 \, .
+\label{eq:Schwingung}
+\end{equation}
+Die Lösungen $q(t)$ können als
+\begin{equation}
+q(t) = A\eto{-\ii \omega t}
+\end{equation}
+geschrieben werden (Realteilbildung impliziert!), wobei die Konstanten $A
+\in \Complex$ und $\omega \in \Reals$ sind. Die Frequenz $\omega$ muss reell
+sein, da sowohl Lösungen mit $+\omega$ und $-\omega$ zulässig sind -- ein
+Imaginärteil würde einem der beiden Fälle zu einem exponentiellen Anwachsen
+der Lösung führen (ebenso zu einem exponentiellen Anwachsen der Energie).
+Die Gleichung \eqref{eq:Schwingung} ist zweiter Ordnung in der Zeit, also
+werden zwei Anfangsbedingungen benötigt. Diese legen den Betrag von $A$
+(die Amplitude der Schwingung) sowie dessen Phase $\varphi_0$ (Phase der Schwingung
+bei $t=0$) fest. Es gilt also mit der Polardarstellung $A = \abs{A}\eto{\ii\varphi_0}$
+\begin{equation}
+\Real q(t) = \Real\left( \abs{A}\eto{\ii\varphi_0}\eto{-\ii\omega t}\right) = \abs{A} \cos(-\omega t + \varphi_0)\, .
+\end{equation}
+
+Wir wollen uns nun die Frage stellen, wie wir Schwingungen in mehreren
+Freiheitsgraden, die aneinander koppeln dürfen, beschreiben können. Die
+folgende Diskussion orientiert sich eng an den entsprechenden Kapiteln in den
+Lehrbüchern von Kuypers \cite{Kuypers} und Goldstein et al \cite{Goldstein}.
+
+\section{Zur Wichtigkeit harmonischer Schwingungen}
+
+Harmonische Schwingungen sind auch für Probleme wichtig, in denen die
+eigentliche Potentiallandschaft kompilzierter ist als die einfache Parabel
+in \eqref{eq:Pot}. Das wird deutlich, wenn man das komplizierte Potential in
+der Nähe eines Minimums $q_0$ für kleine Auslenkungen aus der Ruhelage in
+eine Taylorreihe entwickelt
+\begin{equation}
+V(q) = V(q)\vert_{q=q_0}+ \left.\firstpderiv{V(q)}{q}\right|_{q_0}(q - q_0)  + \frac{1}{2}\left. \secondpderiv{V(q)}{q} \right|_{q_0}(q - q_0)^2 + \dots
+\end{equation}
+Der Term mit der ersten Ableitung $\partial_q V(q_0)$ verschwindet, weil wir
+in einem Minimum $q_0$ entwickelt haben. Lässt man für die Dynamik vollkommen
+irrelevante Konstante $V|_{q_0}$ weg, so bleibt ein Parabelpotential
+$V(q) \approx \frac{1}{2}m\omega^2 (q-q_0)^2$ mit
+$\omega^2 = \frac{2}{m}\partial_q^2 V|_{q_0} $, das genau die Form von
+\eqref{eq:Pot} hat. Sie haben sich in den Übungen zur Vorlesung schon mit
+einer solchen Näherung für das Doppelmuldenpotential $V(q) = q^2-a^2q^2$ beschäftigt, im
+Seminar haben Sie eine solche Näherung für das Morsepotential $V(q) = V_0\left(1-\exp(-aq)\right)^2$
+vorgenommen. Wir haben also bereits gesehen, dass man kleine Schwingungen um
+Potentialminima stets durch Parabelpotentiale beschreiben kann.
+
+Analog lässt sich argumentieren, wenn man mehr als eine
+verallgemeinerte Koordinate hat; in diesem Fall schreibt man für die Taylorreihe
+um das Minimum $\vec{q}_0 = (q_{0,1}\;\dots\;q_{0,s})^\mathrm{T}$
+\begin{equation}
+V(q_1, \dots, q_s) = V(\vec q) = V|_{\vec{q}_0} + \left.\firstpderiv{V}{q_i}\right|_{\vec{q}_0} (q_i - q_{0,i}) + \frac{1}{2} \left.\frac{\partial V}{\partial q_i \partial q_j}\right|_{\vec{q}_0} (q_i - q_{0,i}) (q_j - q_{0,j}) + \dots\,.
+\end{equation}
+Ab jetzt wird die Einsteinsche Summenkonvention verwendet: über in einem Ausdruck wiederholt
+auftretende Indizes wird summiert. Wir wollen die Entwicklung nur für kleine
+Auslenkungen aus der Ruhelage betrachten und nehmen deswegen nur die zweite
+Ordnung mit. Der  lineare Term verschwindet, da um ein Minimum entwickelt
+wurde. Berücksichtigt man außerdem noch, dass das Pot\-ential nur bis auf eine
+Konstante bestimmt ist und schreibt für Auslenkungen aus der Ruhelage
+$\eta_i := q_i - q_{0,i}$, so ist
+\begin{align}
+V(\eta_1, \dots, \eta_s) &\approx \frac{1}{2} \underbrace{\left.\frac{\partial V}{\partial q_i \partial q_j}\right|_{\vec{q}_0}}_{:= V_{ij}} \eta_i\eta_j \, ,\nonumber\\
+&\approx \frac{1}{2} V_{ij} \eta_i\eta_j \, .
+\label{eq:Vapprox}
+\end{align}
+Die zweiten Ableitungen vertauschen, es ist also
+\begin{equation}
+V_{ij} = V_{ji}
+\end{equation}
+beziehungsweise in Matrix-Schreibweise $\mathbf{V}^{T} = \mathbf{V}$. Da
+$\mathbf V$ nur Ableitungen an einer bestimmten Stelle $\vec q_0$ enthält,
+ist $\mathbf V$ eine \emph{konstante} Matrix.
+
+Wenn das Potential (z.B. gekoppelte Federschwinger) gleich so gegeben ist, dass
+$\mathbf{V}$ ohne Näherung abzulesen ist -- also dann, wenn alle
+Wechselwirkungen harmonisch sind -- ist $\mathbf{V}$ symmetrisch, weil actio =
+reactio gilt!
+
+\section{Bewegsgleichungen beliebiger kleiner Schwingungen}
+
+\subsection{Lagrange-Funktion}
+
+Die kinetische Energie lässt sich für zeitunabhängige Zwangsbedingungen als
+\begin{equation}
+T = \frac{1}{2} a_{ij} \dot{q}_i \dot{q}_j = \frac{1}{2} a_{ij} \dot{\eta}_i \dot{\eta}_j
+\label{eq:T}
+\end{equation}
+ausdrücken (siehe dazu den Anhang). Die Terme $a_{ij}$ können dabei noch
+Funktionen der Koordinaten sein. Betrachtet man aber nur kleine Auslenkungen um
+die Ruhelage $\vec{q}_0$, so lassen sich auch die $a_{ij}$ nach Taylor entwickeln:
+\begin{equation}
+a_{ij} = a_{ij}\vert_{\vec{q}_0} + \left.\firstpderiv{a_{ij}}{q_k}\right|_{\vec{q}_0} \eta_k + \dots\, .
+\end{equation}
+Nun ist bereits \eqref{eq:T} quadratisch in den (kleinen) Geschwindigkeiten
+$\dot{\eta}_i$, es ist also vernünftig, nur die niedrigste Ordnung in der
+Entwicklung der $a_{ij}$ mitzunehmen. Mit $T_{ij} := a_{ij}\vert_{\vec{q}_0}$
+schreiben wir $T$ also als
+\begin{equation}
+T = \frac{1}{2} T_{ij}\dot{\eta}_i\dot{\eta}_j
+\label{eq:Tapprox}
+\end{equation}
+Auch die Matrix $\mathbf T = \left[T_{ij} \right]$ ist konstant.
+
+Aus \eqref{eq:Tapprox} und \eqref{eq:Vapprox} ergibt sich nun die
+Lagrange-Funktion
+\begin{equation}
+L = T-V= \frac{1}{2}\left(T_{ij} \dot{\eta}_i\dot{\eta}_j - V_{ij}\eta_i\eta_j\,\right) .
+\label{eq:Lagrange}
+\end{equation}
+beziehungsweise in Matrix-Schreibweise
+\begin{equation}
+L = \frac{1}{2}\left(\dot{\vec{\eta}}^\mathrm{T}\mathbf{T}\dot{\vec{\eta}} - \vec{\eta}^\mathrm{T}\mathbf{V}\vec{\eta}\right)\,.
+\label{eq:MatrixLagrange}
+\end{equation}
+
+\subsection{Bewegungsgleichungen}
+
+Wir betrachten jetzt die $\eta_k$ als generalisierte Koordinaten. Die
+$k=1, \dots, s$ Bewegsgleichungen erhalten wir als Euler-Lagrange-Gleichungen
+zur Langrange-Funktion \eqref{eq:Lagrange}. Dazu betrachten für zunächst einzeln
+$\firstderiv{}{t}\firstpderiv{L}{\dot{q}_{k}}$ und $\firstpderiv{L}{q_k}$:
+\begin{align}
+\firstderiv{}{t}\firstpderiv{L}{\dot{q}_k} &= \frac{1}{2}T_{ij}\firstderiv{}{t} \firstpderiv{}{\dot{\eta}_k} \dot{\eta}_i \dot{\eta}_j\nonumber\\
+&= \frac{1}{2}\firstderiv{}{t} \left(T_{ij} \dot{\eta}_j\delta_{ik} + T_{ij}\dot{\eta}_i\delta_{jk} \right)\nonumber\\
+&= \frac{1}{2}(T_{kj}\ddot{\eta}_j + \underbrace{T_{ik}\ddot{\eta}_i}_{=T_{ki}\ddot{\eta}_i})\nonumber\\
+&= T_{ki} \ddot{\eta}_i
+\label{eq:LGT}
+\end{align}
+
+\begin{align}
+\firstpderiv{L}{\eta_k} &= -\frac{1}{2}V_{ij}\firstpderiv{}{\eta_k}\eta_i\eta_j\nonumber\\
+&= -\frac{1}{2}(V_{ij}\eta_i\delta_{jk} + V_{ij}\eta_j\delta_{ik})\nonumber\\
+&= -\frac{1}{2}(\underbrace{V_{ik}\eta_i}_{=V_{ki}\eta_i} + V_{kj}\eta_j)\nonumber\\
+&= -V_{ki}\eta_i
+\label{eq:LGV}
+\end{align}
+Aus \eqref{eq:LGT} und \eqref{eq:LGV} erhalten wir dann insgesamt in
+Komponentendarstellung als Bewegungsgleichungen
+\begin{equation}
+T_{ki}\ddot{\eta}_i + V_{ki}\eta_{i} = 0\, ,\qquad k=1,\dots,s\,,
+\label{eq:BewGlKomp}
+\end{equation}
+(\emph{keine} Summation in $k$!) beziehungsweise in Matrixschreibweise
+\begin{align}
+\threeMatrix{T_{11}}{\dots}{T_{1s}}{\vdots}{\ddots}{\vdots}{T_{s1}}{\dots}{T_{ss}} \DreierVec{\ddot\eta_1}{\vdots}{\ddot\eta_s} +
+\threeMatrix{V_{11}}{\dots}{V_{1s}}{\vdots}{\ddots}{\vdots}{V_{s1}}{\dots}{V_{ss}} \DreierVec{\eta_1}{\vdots}{\eta_s} = \vec 0
+\end{align}
+oder noch knapper
+\begin{equation}
+\mathbf{T} \ddot{\vec\eta} + \mathbf{V}{\vec\eta} = \vec 0\,.
+\end{equation}
+In dieser Schreibweise lassen sich die einzelnen Matrix-Elemente
+$T_{ij}, V_{ij}$ einfach interpretieren: nehmen wir an, dass $\mathbf{T}$
+diagonal ist (typischer Fall). Folgende Fälle sind dann zu unterscheiden:
+\begin{enumerate}
+    \item $\mathbf{V}$ diagonal: \eqref{eq:BewGlKomp} beschreibt $s$ voneinander
+    unabhängige harmonische Schwingungen mit den Frequenzen $\omega_k = \sqrt{V_{kk}}; k=1,\dots,s$.
+    \item $\mathbf{V}$ ist nicht diagonal: die off-diagonal Elemente $V_{i,j\ne i}$
+    von \eqref{eq:BewGlKomp} beschreiben die Kopplung der Schwingungen in den einzelnen $\eta_k$.
+\end{enumerate}
+
+\subsection{Zur Lösung der Bewegungsgleichungen}
+
+Die $s$ Bewegungsgleichungen \eqref{eq:BewGlKomp} lassen sich durch den Ansatz
+\begin{equation}
+\eta_i(t) = C A_i \eto{-\ii \omega t}
+\end{equation}
+respektive
+\begin{equation}
+\vec{\eta}(t) = C \vec{A} \eto{-\ii \omega t}
+\end{equation}
+lösen. $C$ ist dabei ein noch nicht näher bestimmter Skalenfaktor, die $A_i$
+sind die Amplituden für die einzelnen Schwingungen. Man beachte, dass wir
+bis jetzt genau eine Frequenz $\omega$ angesetzt haben, nicht mehrere!
+Einsetzen führt auf
+\begin{equation}
+\left(V_{ki} - \omega^2 T_{ki} \right)A_i = 0
+\end{equation}
+beziehungsweise
+\begin{equation}
+\left(\mathbf{V} - \omega^2\mathbf{T}\right)\vec{A} = \vec 0\, .
+\label{eq:EWlike}
+\end{equation}
+Dies ist ein lineares Gleichungssystem für die Amplituden $A_i$. Dieses ist
+nicht-trivial lösbar, wenn die Determinante der Koeffizientenmatrix
+verschwindet, also
+\begin{equation}
+\det \left(\mathbf{V} - \omega^2\mathbf{T} \right) = 0
+\label{eq:Det}
+\end{equation}
+erfüllt ist. Die Determinante führt auf ein Polynom in der Variable
+$\omega^2$ vom Grad $s$. Dieses hat genau $s$ Lösungen, die hier wegen
+Energieerhaltung sogar reell sein müssen und positiv gewählt werden können.
+Die Wurzeln der Lösungen nennen wir $\omega_r$ (mit $r=1,\dots,s$). Eine
+allgemeine Lösung für unser Problem müssen wir dann aus diesen Lösungen
+superponieren, für die Koordinate $\eta_i(t)$ gilt
+\begin{equation}
+\eta_i(t) = C_r A_{i,r} \eto{-\ii \omega_r t}\, ,
+\label{eq:SchwingR}
+\end{equation}
+wobei die Größe $C_r A_{i,r}$ genau die Amplitude des Beitrags der Frequenz
+$\omega_r$ zur der Schwingung des Freiheitsgrades $i$ ist. Die Lösung ist
+nur dann periodisch, wenn die alle Frequenzen ``kommensurabel'' sind, das
+heißt, wenn alle Frequenzverhältnisse $\omega_i/\omega_j$ rational
+sind. \footnote{Ist bei zwei Freiheitsgraden zum Beispiel $\omega_1/\omega_2 = p/q$
+(mit $\omega_1 < \omega_2$ und $p,q$ teilerfremd sowie $p,q \in \Naturals$
+), dann beträgt die Periode $T$ gerade $T=2\pi q/\omega_2$ -- Freiheitsgrad
+1 hat nach dieser Zeit gerade $p$ Durchläufe hinter sich, Freiheitsgrad 2
+hingegen $q$.} Die Lösungen für alle Freiheitsgrade lassen sich übrigens
+wieder vektoriell als
+\begin{equation}
+\vec\eta(t) = C_r \vec A_r \eto{-\ii\omega_r t}
+\label{eq:BewLsg}
+\end{equation}
+zusammenfassen. Wenn die Frequenzen bekannt sind (also geklärt wurde, für
+welche $\omega$ das Gleichungssystem \eqref{eq:EWlike} lösbar ist) lassen sich
+aus \eqref{eq:EWlike} Beziehungen zwischen den Amplituden $A_i$ als Lösungen
+des Gleichungssystems ableiten. Dieses Vorgehen wollen wir an einem Beispiel
+illustrieren.
+
+\subsection*{Beispiel: zwei gekoppelte Federschwinger}
+
+Betrachtet wird das folgende System:
+\begin{center}
+    \includegraphics[width=0.4\textwidth]{Federschwinger}
+\end{center}
+
+Die für die kinetische sowie die potentielle Energie finden wir
+\begin{align}
+T &= \frac{m}{2}\left(\dot\eta_1^2 +\dot\eta_2^2 \right)\, ,\\
+V &= \frac{1}{2}\left(D\eta_1^2 + D\eta_2^2 + \tilde D (\eta_2 - \eta_1)^2\right)\, ,
+\end{align}
+was jeweils quadratisch in $\dot\eta$ beziehungsweise $\eta$ ist. In
+Matrixschreibweise ist also mit \eqref{eq:Vapprox} beziehungsweise
+\eqref{eq:Tapprox}
+\begin{equation}
+\mathbf{T} = m\twoMatrix{1}{0}{0}{1}\,,\qquad
+\mathbf{V} = \twoMatrix{D + \tilde{D}}{-\tilde{D}}{-\tilde{D}}{D + \tilde{D}}\,.
+\end{equation}
+Die Lösungen für die Frequenzen $\omega_i$ erhalten wir aus Gleichung
+\eqref{eq:Det} durch Nullsetzen der Determinante
+\begin{align}
+\left| \begin{array}{cc} D + \tilde D - m\omega^2& - \tilde D\\-\tilde D & D + \tilde D - m\omega^2\end{array} \right| &\stackrel{!}{=} 0 \, ,\nonumber\\
+\Leftrightarrow	\left( D + \tilde D - m\omega^2\right)^2 - \tilde{D}^2 &\stackrel{!}{=} 0
+\end{align}
+was die Lösungen
+\begin{align}
+\omega_1 &= \sqrt{\frac{D}{m}}\,,\nonumber\\
+\omega_2 &= \sqrt{\frac{D+2\tilde{D}}{m}}\,,\nonumber
+\end{align}
+hat. Mit diesen beiden Lösungen lässt sich das lineare Gleichungssystem
+\eqref{eq:EWlike} für die Amplituden $A_i$ lösen. Man findet
+\begin{enumerate}
+    \item für $\omega_1 = \sqrt{D/m}$ die Lösung $A_1 = A_2$. Das bedeutet,
+    dass beide Teilchen mit der selben Frequenz gleichphasig
+    schwingen. Der Abstand $\eta_2 - \eta_1$ bleibt dabei zeitlich konstant.
+    \item für $\omega_2 = \sqrt{(D+2\tilde D)/m}$ die Lösung $A_1 = -A_2$.
+    Diese Lösung beschreibt eine gegenphasige Schwingung, bei der der Schwerpunkt
+    erhalten bleibt.
+\end{enumerate}
+Die beiden Lösungen
+\begin{align}
+\vec\eta_1(t) &= C_1 \ZweierVec{1}{1}\eto{-\ii\omega_1 t}\\
+\vec\eta_2(t) &= C_2 \ZweierVec{1}{-1}\eto{-\ii \omega_2 t}
+\end{align}
+nennt man die \emph{Normalschwingungen} des Systems. Die
+allgemeine Lösung ist nach \eqref{eq:BewLsg} die Superposition
+\begin{equation}
+\vec \eta(t) = C_1 \ZweierVec{1}{1}\eto{-\ii\omega_1 t} + C_2 \ZweierVec{1}{-1}\eto{-\ii \omega_2 t}\, .
+\end{equation}
+Betrag und Phase von $C_i$ sind aus Anfangsbedingungen zu bestimmen. Wie
+gehabt wird auch hier wieder Realteilbildung impliziert.
+
+\section{Normalschwingungen}
+
+Die Normalschwingungen \eqref{eq:BewLsg} beschreiben einen speziellen Typus
+der Schwingung -- nämlich den, bei dem nur eine einzige Frequenz zur
+Schwingung beiträgt. Alle Freiheitsgrade schwingen mit der selben Frequenz.
+Bei diesen Schwingungen wird keine Energie zwischen den Freiheitsgraden
+ausgetauscht. Bei einer allgemeinen Lösung (aus Normalschwingungen
+superponiert) ist dies nicht der Fall. Durch die Kopplung der verschiedenen
+Freiheitsgrade aneinander tragen mehrere Frequenzen zur Schwingung bei. Im
+Allgemeinen (es finden sich für $N$ gekoppelte Freiheitsgrade
+auch $N$ Frequenzen). Nehmen wir nun kurz an, wir fänden einen neuen Satz
+Koordinaten, in dem in der Bewegungsgleichung $\mathbf{T} \ddot{\vec\eta} +
+\mathbf{V}{\vec\eta} = \vec 0$ sowohl $\mathbf{T}$ als auch $\mathbf{V}$
+diagonal werden, so haben wir es mit $s$ entkoppelten Schwingungen zu tun.
+Wir wollen nun zeigen, dass es Koordinatentransformationen gibt, die genau
+auf ein solches Koordinatensystem führen. Die zuhehörigen Koordinaten heißen
+\emph {Normalkoordinaten}. In den Normalkoordinaten werden dann wie
+gewünscht alle Freiheitsgrade mit genau einer Frequenz schwingen.
+
+In Gleichung \eqref{eq:BewLsg} wurden die Beiträge der Frequenz $\omega_m$ mit
+$\vec A_m$ bezeichnet. Wir betrachten nochmals die Gleichung \eqref{eq:EWlike},
+die wir für die $m$-te beziehungsweise die $n$-te Frequenz als
+\begin{align}
+\omega_m^2\mathbf{T}\vec{A}_m = \mathbf{V}\vec{A}_m\, ,\qquad m=1,\dots,s
+\intertext{und}
+\omega_n^2\mathbf{T}\vec{A}_n = \mathbf{V}\vec{A}_n\, ,\qquad n=1,\dots,s
+\end{align}
+schreiben können. Diese Gleichungen verknüpfen (für feste $m,n$) jeweils
+zwei Vektoren mit jeweils $s$ Komponenten miteinander. Multiplizieren wir
+nun die erste Gleichung von links mit $\vec A^\mathrm{T}_n$ und die zweite
+ebenfalls von links mit $\vec A^\mathrm{T}_m$ und ziehen beide Gleichungen
+voneinander ab. Wir erhalten
+\begin{equation}
+\omega_m^2 \vec A^\mathrm{T}_n\mathbf{T}\vec{A}_m  - \omega_n^2 \vec A^\mathrm{T}_m\mathbf{T}\vec{A}_n = \vec A^\mathrm{T}_n\mathbf{V}\vec{A}_m - \vec A^\mathrm{T}_m\mathbf{V}\vec{A}_n
+\label{eq:Normal1}
+\end{equation}
+(\emph{keine} Summation in $m$ und $n$!). Im ersten Summanden auf beiden
+Seiten der Gleichung Seite können wir ein wenig umformen, wenn wir uns
+erinneren, dass für symmetrische Matrizen $B_{ij} = B_{ji}$ und zwei Vektoren
+$a_k, b_l$
+\begin{align}
+\vec{a}^\mathrm{T}\mathbf{B}\vec{c} &= a_i B_{ij} c_j\nonumber\\
+&=a_i B_{ji} c_j\nonumber\\
+&= \vec{c}^\mathrm{T}\mathbf{B}\vec{a}\nonumber
+\end{align}
+gilt. Damit verschwindet in Gleichung \eqref{eq:Normal1} die rechte Seite.
+Ausklammern auf der linken Seite führt zu
+\begin{equation}
+\left( \omega_m^2 - \omega_n^2\right) \vec A^\mathrm{T}_n\mathbf{T}\vec{A}_m = 0\,.
+\end{equation}
+Nehmen wir nun an, dass alle Frequenzen $\omega$ verschieden sind. Dann kann die
+letzte Gleichung nur dann wahr sein, wenn für $n\ne m$ gerade
+$\vec A^\mathrm{T}_n\mathbf{T}\vec{A}_m = 0$ gilt. Betrachten wir nun eine
+Schwingung, also ein festes $n=m$. Aus physikalischen Gründen ist die kinetische
+Energie positiv (außer an den Umkehrpunkten der Bewegung). Das wir deutlich, wenn
+wir den Realteil der Lösung der Bewegungsgleichung \eqref{eq:SchwingR}, benutzen
+und zunächst
+\begin{align}
+\vec{\eta}(t) &= \abs{C_n}\vec{A}_n \cos(-\omega_n t+\varphi_0)\nonumber\\
+\Rightarrow \dot{\vec \eta}(t) &=  \omega_n \abs{C_n}\vec{A}_n \sin(-\omega_n t+\varphi_0)
+\end{align}
+ableiten. Damit schreiben wir die kinetische Energie als
+\begin{align}
+T &= \frac{1}{2}\dot{\vec{\eta}}_n^\mathrm{T} \mathbf{T} \dot{\vec{\eta}}_n\nonumber\\
+&= \frac{1}{2} \omega_n^2 \abs{C_n}^2 \sin^2(-\omega_n t +\varphi_0) \vec A^\mathrm{T}_n\mathbf{T}\vec{A}_n \, ,
+\end{align}
+(\emph{keine} Summation in $n$). 
+Dieser Ausdruck ist für $\vec{A}_n \ne \vec 0$ auf jeden Fall positiv. Wir können
+nun die Amplituden $\vec{A}_n$ und die Skalenfaktoren $C_n$ so wählen, dass
+\begin{align}
+\vec A^\mathrm{T}_n\mathbf{T}\vec{A}_n = 1
+\label{eq:Anorm}
+\end{align}
+(\emph{keine} Summation in $n$) wird! An diese Stelle wird nochmals deutlich, weshalb die $C$-Faktoren
+überhaupt eingeführt wurden. Nun können wir alle Amplitudenvektoren $\vec
+A_n$ in eine einzige Matrix zusammenfassen:
+\begin{equation}
+\mathbf{A} := \threeMatrix{A_{11}}{\dots}{A_{1s}}{\vdots}{\ddots}{\vdots}{A_{s1}}{\dots}{A_{ss}} = \left[\vec A_1\; \dots\;\vec A_3\right]\,.
+\end{equation}
+Nun können wir alle $s$ Gleichungen \eqref{eq:Anorm} (für alle $s$ Frequenzen
+$\omega_n$) in einer kompakten Matrixschreibweise fassen:
+\begin{equation}
+\mathbf{A}^\mathrm{T} \mathbf{T} \mathbf{A} = \mathbf{1}
+\label{eq:Tdiag}
+\end{equation}
+Gehen wir nun zu Gleichung \eqref{eq:EWlike} zurück. Führen wir nun noch die
+Matrix
+\begin{equation}
+\mathbf{\Omega} := \diag\left(\omega_1, \dots,\omega_s\right)
+\end{equation}
+ein, können wir wieder für alle $s$ Frequenzen kompakt in einer Matrixgleichung
+\begin{equation}
+\mathbf{V}\mathbf{A} = \mathbf{T}\mathbf{A}\mathbf{\Omega}^2
+\end{equation}
+schreiben. Multiplikation von links mit $\mathbf{A}^\mathrm{T}$ führt
+unter Verwendung von $\mathbf{A}^\mathrm{T}\mathbf{T}\mathbf{A}=\mathbf{1}$ auf
+\begin{equation}
+\mathbf{A}^\mathrm{T}\mathbf{V}\mathbf{A} = \mathbf{\Omega}^2\,.
+\label{eq:Vdiag}
+\end{equation}
+Dieses Resultat interpretieren wir wie folgt: die Matrix $\mathbf{A}$ ist im Stande,
+\emph{gleichzeitig} $\mathbf{T}$ und $\mathbf{V}$ zu diagonalisieren. Die
+Gleichungen \eqref{eq:Tdiag} und \eqref{eq:Vdiag} haben außerdem die Form einer
+Ähn\-lich\-keits\-trans\-for\-mation $\diag(\lambda_1,\dots,\lambda_s) = \mathbf{B}^{-1}\mathbf{C}\mathbf{B}$,
+woraus wir (ohne strengen Beweis) schließen, dass $\mathbf{A}$ orthogonal ist, also
+$\mathbf{A}^\mathrm{T}\mathbf{A}=\mathbf{1}$ gilt.
+
+Die Koordinatentransformationen
+\begin{equation}
+\vec \eta = \mathbf{A}\vec{Q}
+\end{equation}
+liefert die sogenannten \emph{Hauptkoordinaten} $\vec{Q}$. In diesen Koordinaten
+haben wir es mit $s$ \emph{entkoppelten} Schwingungen mit den Frequenzen
+$\omega_1, \dots, \omega_s$ zu tun. Um das nochmal klar zu machen, setzen wir
+die letzte Gleichung in die Lagrange-Funktion \eqref{eq:MatrixLagrange} ein:
+\begin{align}
+L(\vec q, \dot{\vec q}) &= \frac{1}{2}\left(\dot{\vec{\eta}}^\mathrm{T}\mathbf{T}\dot{\vec{\eta}} - \vec{\eta}^\mathrm{T}\mathbf{V}\vec{\eta}\right)\,,\nonumber\\
+\Leftrightarrow L(\vec Q, \dot{\vec Q}) &= \frac{1}{2}\left(\dot{\vec{Q}}^\mathrm{T}\underbrace{\mathbf{A}^\mathrm{T}\mathbf{T}\mathbf{A}}_{=\mathbf{1}}\dot{\vec{Q}} - \vec{Q}^\mathrm{T}\underbrace{\mathbf{A}^\mathrm{T}\mathbf{V}\mathbf{A}}_{=\mathbf{\Omega}^2}\vec{Q}\right)\,,\nonumber\\
+&= \frac{1}{2}\left(\dot{\vec{Q}}^\mathrm{T}\dot{\vec Q} - \dot{\vec{Q}}^\mathrm{T}\mathbf{\Omega}^2\dot{\vec Q}\right)
+\end{align}
+beziehungsweise in Komponentendarstellung
+\begin{equation}
+L(Q_1,\dots,Q_s, \dot{Q}_1,\dots,\dot{Q}_s) = \dot{Q}_i^2 - \omega_i^2 Q_i^2\, ,
+\end{equation}
+woraus sofort die $s$ (\emph{entkoppelten!}) Bewewgungsgleichungen
+\begin{equation}
+\ddot{Q}_i + \omega_i^2 Q_i = 0
+\end{equation}
+abgeleitet werden können. In diesen Koordinaten sind die Lösungen also
+harmonische Schwingungen mit den Frequenzen $\omega_i$.
+
+\subsection*{Beispiel: zwei gekoppelte Federschwinger -- \emph{revisited}}
+
+Im Beispiel mit den zwei gekoppelten Federschwingern haben wir zwei Frequenzen
+als Lösung gefunden. Die beiden zugehörigen Amplituden $\vec A$ bilden dann die
+Matrix
+\begin{equation}
+\mathbf{A} = \frac{1}{2m}\twoMatrix{1}{1}{1}{-1}\, ,
+\end{equation}
+die bereits so normiert wurde, dass
+\begin{align}
+\mathbf{A}^\mathrm{T}\mathbf{T}\mathbf{A} &= \frac{m}{2m}\twoMatrix{1}{1}{1}{-1}\twoMatrix{1}{0}{0}{1}\twoMatrix{1}{1}{1}{-1} = \twoMatrix{1}{0}{0}{1}\, ,\\
+\mathbf{A}^\mathrm{T}\mathbf{V}\mathbf{A} &= \frac{1}{2m}\twoMatrix{1}{1}{1}{-1}\twoMatrix{D+\tilde D}{-\tilde D}{-\tilde D}{D+\tilde D}\twoMatrix{1}{1}{1}{-1} = \frac{1}{m}\twoMatrix{D}{0}{0}{D+2\tilde D}\, .
+\end{align}
+Die zugehörigen Koordinaten $\vec Q$ ergeben sich aus
+\begin{align}
+\vec{Q} = \mathbf{A}^\mathrm{T} \vec{\eta} = \frac{1}{\sqrt{2m}}\ZweierVec{\eta_1 + \eta_2}{\eta_1-\eta_2}
+\end{align}
+was konsistent mit der vorherigen Rechnung ist: die Koordinate $Q_1 = \eta_1 + \eta_2$
+beschreibt die gleichphasige Schwingung mit der Frequenz $\sqrt{D/m}$, in der
+Koordinate $Q_2 = \eta_1 - \eta_2$ hingegen finden wir eine gegenphasige
+Schwingung der beiden Massen mit der Frequenz $\sqrt{(D+2\tilde D)/m}$.
+
+%Man beachte hierzu, dass wir es nicht mit einem
+%Standard-Problem der linearen Algebra zu tun haben, da die aus \eqref
+%{eq:EWlike} gewonne Gleichung
+%\begin{equation}
+%\omega^2\mathbf{T}\vec{A} = \mathbf{V}\vec{A}
+%\end{equation}
+%\emph{kein} normales Eigenwertproblem ist.
+
+\bibliographystyle{ieeetr}
+
+\bibliography{Mechanik-Schwingungen}
+
+%\clearpage
+\section*{Angang: Kinetische Energie $T$ als quadratische Form in den verallgemeinerten Koordinaten $q_i$}
+
+In kartesischen Koordinaten schreibt sich die kinetische Energie eines
+$N$-Teilchensystems als
+\begin{equation}
+T = \sum\limits_{i=1}^{N} \frac{m_i}{2} \dot{\vec{r_i}}^2 \, .
+\end{equation}
+$T$ ist also quadratisch in den $\dot{\vec r}_i$. Hat $T$ auch in
+verallgemeinerten Koordinaten $q_l$ eine solche Form ($l=1,\dots,s$; mit $s=3N-k$; $k$:
+\#Zwangsbedingungen)? Können wir also
+\begin{align}
+T &= \sum\limits_{j,l}^{s} a_{jl} \dot{q}_j \dot{q}_l\nonumber\\
+&= \left[ \dot{q}_1\; \dots\;\dot{q}_{s} \right] \threeMatrix{a_{1,1}}{\dots}{a_{1,s}}{\vdots}{\ddots}{\vdots}{a_{s,1}}{\dots}{a_{s, s}}
+\DreierVec{\dot{q}_{1}}{\vdots}{\dot{q}_{s}}\nonumber\\
+&= \dot{\vec{q}}^\mathrm{T} \mathbf{a} \dot{\vec{q}}
+\label{eq:Tquad}
+\end{align}
+schreiben? Für holonome, skleronome Zwangsbedingungen können wir die $\vec r_i$
+als Funktion der verallgemeinerten Koordinaten $q_l$ ausdrücken:
+$\vec r_i = \vec r_i(q_1, \dots, q_{s})$. Wir schreiben hierzu
+\begin{align}
+T &=  \sum\limits_{i=1}^{N} \frac{m_i}{2} \left(\firstderiv{\vec{r}_i(q_j(t))}{t}\right)^2\nonumber\\
+&= \sum\limits_{i=1}^{N} \frac{m_i}{2} \left( \sum\limits_{j=1}^{s} \firstpderiv{\vec{r}_i}{q_j}\dot{q}_j \cdot  \sum\limits_{l=1}^{s} \firstpderiv{\vec{r}_i}{q_l}\dot{q}_l \right)\nonumber\\
+&= \sum\limits_{i=1}^{N} \frac{m_i}{2} \sum\limits_{j,l=1}^{s} \firstpderiv{\vec{r}_i}{q_j} \cdot \firstpderiv{\vec{r}_i}{q_l}\dot{q}_j \dot{q}_l \, ,
+\end{align}
+wobei die Kettenregel ausgenutzt wurde. Außerdem wurde das Quadrat
+ausgeschrieben. Im letzten Schritt wurde für die $j,l$-Summation eine
+Doppelsumme geschrieben. Vertauschen wir nun noch die Summationsreihenfolge,
+so erhalten wir
+\begin{equation}
+T = \sum\limits_{j,l=1}^{s} \underbrace{\sum\limits_{i=1}^{N} \frac{m_i}{2} \firstpderiv{\vec{r}_i}{q_j} \cdot \firstpderiv{\vec{r}_i}{q_l}}_{:=a_{jl}} \dot{q}_j \dot{q}_l \, ,
+\end{equation}
+was genau die Form \eqref{eq:Tquad} hat! Da das Skalarprodukt kommutativ ist, 
+ist $a_{jl}$ symmetrisch:
+\begin{equation}
+a_{jl} = a_{lj}\, ,
+\end{equation}
+das heißt, die Matrix $\mathbf{a}$, deren Elemente die $a_{jl}$ sind, ist
+symmetrisch, es gilt $\mathbf{a}^{T} = \mathbf{a}$.
+
+Für diese komplizierte Schreibweise wollen wir nun ein einfaches Beispiel
+machen. Betrachten wir ein Teilchen ($N=1$), dass durch eine Zwangsbedingung
+($k=1$) so eingeschränkt wird, dass es sich noch auf der Oberfläche einer Kugel
+mit Radius $R$ bewegen kann. Wir wählen als generalisierte Koordinaten
+$q_1 = \varphi$, $q_2 = \vartheta$, wobei $\varphi$ und $\vartheta$ wie in
+Kugelkoordinaten üblich definiert sind. Es gilt also
+\begin{equation}
+\vec r(\varphi, \vartheta) = R\DreierVec{\cos(\varphi)\sin(\varphi)}{\sin(\varphi)\sin(\vartheta)}{\cos(\vartheta)}\,.
+\end{equation}
+Mit den Ableitungen
+\begin{align}
+\firstpderiv{\vec{r}}{\varphi} &= R\DreierVec{-\sin(\varphi)\sin(\vartheta)}{\sin(\vartheta)\cos(\varphi)}{0}\\
+\firstpderiv{\vec{r}}{\vartheta} &= R\DreierVec{\cos(\varphi)\cos(\vartheta)}{\sin(\varphi)\cos(\vartheta)}{-\sin(\vartheta)}
+\end{align}
+ergeben sich die Elemente der Matrix $\mathbf{a}$ zu
+\begin{align}
+a_{11} &= \frac{m}{2} \left(\firstpderiv{\vec r}{\varphi}\right)^2 = \frac{m}{2} R^2 \sin^2(\vartheta)\, ,\\
+a_{22} &= \frac{m}{2} \left(\firstpderiv{\vec r}{\vartheta}\right)^2 = \frac{m}{2} R^2\, ,\\
+a_{12} &= a_{21} = \firstpderiv{\vec r}{\varphi}\cdot\firstpderiv{\vec r}{\vartheta} = 0\, ,
+\end{align}
+womit die kinetische Energie eines Teilchens auf einer Kugel sich zu
+\begin{equation}
+T = \frac{m}{2}R^2 \left[ \dot\varphi\quad\dot\vartheta \right] \twoMatrix{\sin^2(\vartheta)}{0}{0}{1} \ZweierVec{\dot\varphi}{\dot\vartheta} = \frac{m}{2} R^2 \left(\sin^2(\vartheta)\dot{\varphi}^2 + \dot{\vartheta}^2\right)
+\end{equation}
+ergibt.
+
+\end{document}
+
