@@ -1,0 +1,49 @@
+\documentclass[11pt]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{amssymb,amsthm}
+\usepackage[leqno]{amsmath}
+\usepackage{units}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations,shapes,arrows,scopes,fadings,plotmarks,calc,intersections,patterns,positioning
+}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.shapes}
+\usetikzlibrary{decorations.markings}
+
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\usepackage[pdftex,active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.3,rotate=-6]
+	\draw[ultra thick, name path = bd] (-1.6,0.9) to [out=40,in=-168] (0,1.7) to [out=12,in=180] (2.2,1.9)  to [out=0,in=160] (4,1.65) to [out=-20,in=140] (5.7,0.6) ;
+	\foreach \i in {0,1,2}
+		\foreach \j in {0,1}
+			\draw[to-to,semithick] (\i+0.7,\j+0.5) -- (\i+1.3,\j+0.5);
+	\foreach \i in {0,1,2,3}
+		\draw[to-to,semithick] (\i+0.5,0.7) -- (\i+0.5,1.3);
+	\path[name path = arrow] (0.6,1)--(0.25,2.6)coordinate(ldA);
+	\draw[-to,very thick,name intersections= {of = bd and arrow, by=x}] (x)--(ldA);
+	\path[name path = arrow] (1.58,1)--(1.4,2.74)coordinate(ldA);
+	\draw[-to,very thick,name intersections= {of = bd and arrow, by=x}] (x)--(ldA);
+	\path[name path = arrow] (2.5,1)--(2.52,2.76)coordinate(ldA);
+	\draw[-to,very thick,name intersections= {of = bd and arrow, by=x}] (x)--(ldA);
+	\path[name path = arrow] (3.35,1)--(3.75,2.56)coordinate(ldA);
+	\draw[-to,very thick,name intersections= {of = bd and arrow, by=x}] (x)--(ldA);
+
+	\clip (-2,0.9) to [out=30,in=-168] (-1.6,0.9) to [out=40,in=-168] (2.2,1.9)  to [out=0,in=160] (4,1.65) to [out=-20,in=140] (5.7,0.6) -- (5,-0.3) -- (-1,-0.3)--cycle;
+	\draw[step=1,thin] (-0.3,-0.3) grid (4.3,2.3);
+\end{tikzpicture}
+
+\end{document}
