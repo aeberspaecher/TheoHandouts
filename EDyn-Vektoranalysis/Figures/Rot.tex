@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{amssymb,amsthm}
+\usepackage[leqno]{amsmath}
+\usepackage{units}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations,shapes,arrows,scopes,fadings,plotmarks,calc,intersections,patterns,positioning
+}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.shapes}
+\usetikzlibrary{decorations.markings}
+
+\usepackage{pgfplots}
+\usepackage{tikz-3dplot}
+
+\usepackage[pdftex,active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{1mm}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.2]
+	\def\a {7}
+	\def\b {5}
+	\def\rand {1.1}
+	\newcommand {\cn}[1] {\text{\large \textcircled {\scriptsize #1}}}
+	\draw[-to,semithick] (0,0) -- (\a,0) node[right] {$ x $ };
+	\draw[-to,semithick] (0,0) -- (0,\b) node[left] {$ y $ };
+
+	\draw[thick] (\rand,\rand) coordinate(A) -- (\a-\rand,\rand) coordinate (B) -- (\a-\rand,\b-\rand) coordinate (C) -- (\rand, \b-\rand) coordinate (D) -- cycle;
+	\node[below] at (A) {$ (x_0,y_0) $ };
+	\node[below] at (B) {$ (x_0+dx,y_0) $ };
+	\node[above] at (C) {$ (x_0+dx,y_0+dy) $ };
+	\node[above] at (D) {$ (x_0,y_0+dy) $ };
+
+	\node[below] at ($ (A)!0.5!(B) $ ) {$ \cn{1} $ };
+	\node[right] at ($ (B)!0.5!(C) $ ) {$ \cn{2} $ };
+	\node[above] at ($ (C)!0.5!(D) $ ) {$ \cn{3} $ };
+	\node[left] at ($ (D)!0.5!(A) $ ) {$ \cn{4} $ };
+
+	\draw[-to,thick] ($ (A)!0.5!(C)+(-130:0.8) $ ) arc (-130:130:0.8);
+\end{tikzpicture}
+
+\end{document}
