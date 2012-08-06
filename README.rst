@@ -46,3 +46,9 @@ Mein sehr nützliches, in Sachen Optionen etwas bug-behaftetes und schlecht
 dokumentiertes `Mathe-Convenience Paket simpleMath
 <https://github.com/aeberspaecher/simpleMath>`_ gibt es auch auf Github, ist
 aber auch als Teil dieses Repositoriums zu finden.
+
+Danke an ...
+------------
+
+Allerbesten Dank an Marco Doemeland für die Überarbeitung der Bilder in den
+Elektrodynamik-Handouts!
