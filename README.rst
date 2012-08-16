@@ -8,7 +8,7 @@ In diesem Repositorium befinden sich die Handouts, die ich in einem Tutorium
 zur Theoretischen Physik (Vorlesungen Mechanik und Elektrodynamik) an der
 Otto-von-Guericke-Universität in den Jahren 2011 und 2012 verwendet habe.
 Ausführliche Handouts habe ich immer dann ausgeteilt, wenn viel Stoff in
-wenig zu erledigen war. Thematisch geht es in den Handouts immer um
+wenig Zeit zu erledigen war. Thematisch geht es in den Handouts immer um
 Methodisches.
 
 Status
