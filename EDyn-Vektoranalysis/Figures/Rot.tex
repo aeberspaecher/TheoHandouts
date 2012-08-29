@@ -8,6 +8,7 @@
 \usepackage{amssymb,amsthm}
 \usepackage[leqno]{amsmath}
 \usepackage{units}
+\usepackage{../simpleMath}
 
 \usepackage{tikz}
 \usetikzlibrary{decorations,shapes,arrows,scopes,fadings,plotmarks,calc,intersections,patterns,positioning
@@ -36,9 +37,9 @@
 
 	\draw[thick] (\rand,\rand) coordinate(A) -- (\a-\rand,\rand) coordinate (B) -- (\a-\rand,\b-\rand) coordinate (C) -- (\rand, \b-\rand) coordinate (D) -- cycle;
 	\node[below] at (A) {$ (x_0,y_0) $ };
-	\node[below] at (B) {$ (x_0+dx,y_0) $ };
-	\node[above] at (C) {$ (x_0+dx,y_0+dy) $ };
-	\node[above] at (D) {$ (x_0,y_0+dy) $ };
+	\node[below] at (B) {$ (x_0+\dd x,y_0) $ };
+	\node[above] at (C) {$ (x_0+\dd x,y_0+\dd y) $ };
+	\node[above] at (D) {$ (x_0,y_0+\dd y) $ };
 
 	\node[below] at ($ (A)!0.5!(B) $ ) {$ \cn{1} $ };
 	\node[right] at ($ (B)!0.5!(C) $ ) {$ \cn{2} $ };

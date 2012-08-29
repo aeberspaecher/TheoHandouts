@@ -8,6 +8,7 @@
 \usepackage{amssymb,amsthm}
 \usepackage[leqno]{amsmath}
 \usepackage{units}
+\usepackage{../simpleMath}
 
 \usepackage{tikz}
 \usetikzlibrary{decorations,shapes,arrows,scopes,fadings,plotmarks,calc,intersections,patterns,positioning
@@ -39,9 +40,9 @@
 
 	\path[name path = arrow] (P)--(Q);
 	\path[name intersections= {of = us and arrow, by=R}];
-	\draw[thick] (P)--(R) node[near end,right] {$ d\boldsymbol r $ };
+	\draw[thick] (P)--(R) node[near end,right] {$ \dd\vec r $ };
 	\draw[thick,dashed,-to] (R)--(Q);
-	\draw[thick,-to] (Q)--($(R)!2.2!(Q)$) node[right] {$ \boldsymbol\nabla f $ };
+	\draw[thick,-to] (Q)--($(R)!2.2!(Q)$) node[right] {$ \nabla f $ };
 
 	\node at (2,-2.1) {$ f=C_1 $ };
 	\node at (4.3,0.7) {$ f=C_2 $ };

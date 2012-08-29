@@ -8,6 +8,7 @@
 \usepackage{amssymb,amsthm}
 \usepackage[leqno]{amsmath}
 \usepackage{units}
+\usepackage{../simpleMath}
 
 \usepackage{tikz}
 \usetikzlibrary{decorations,shapes,arrows,scopes,fadings,plotmarks,calc,intersections,patterns,positioning
@@ -47,9 +48,9 @@
 
 	\draw[thick, line join=round] (A)--(B)--(F)--(E)--(A)--(C)--(G)--(E)--(G)--(H)--(F)--(H)--(D)--(B)--(D)--(C)--(A)--cycle;
 
-	\node[right] at ($(B)!0.5!(F)$) {$ d_x $ };
-	\node[below] at ($(A)!0.5!(B)$) {$ d_y $ };
-	\node[left] at ($(A)!0.5!(C)$) {$ d_z $ };
+	\node[right] at ($(B)!0.5!(F)$) {$ \dd x $ };
+	\node[below] at ($(A)!0.5!(B)$) {$ \dd y $ };
+	\node[left] at ($(A)!0.5!(C)$) {$ \dd z $ };
 \end{tikzpicture}
 
 \end{document}

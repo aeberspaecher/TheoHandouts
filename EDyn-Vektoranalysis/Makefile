@@ -23,4 +23,3 @@ simpleMath.sty:
 
 clean:
 	rm EDyn-Vektoranalysis.pdf *.out *.bbl *.aux *.blg *.log simpleMath.sty
-
