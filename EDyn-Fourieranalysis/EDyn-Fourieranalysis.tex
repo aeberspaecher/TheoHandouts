@@ -45,6 +45,7 @@ lassen sich in eine sogenannte Fourierreihe entwicklen:
 
 \begin{equation}
 f(x) = \frac{a_0}{2}+\sum\limits_{n=1}^{\infty}a_n\cos(nx) + \sum\limits_{n=1}^{\infty}b_n\sin(nx)\,,
+\label{eq:Fourierreihe}
 \end{equation}
 wobei die Entwicklungskoeffizienten $a_n$ und $b_n$ durch
 \begin{align}
@@ -80,8 +81,9 @@ $\left\{\begin{array}{c}\cos(nx)\\\sin(nx)\end{array}\right\}$.
 
 \subsection{Komplexe Darstellung}
 
-Mit der Eulerformel $\eto{\ii nx} = \cos(nx)+\ii\sin(nx)$ ergibt sich die
-komplexe Darstellung
+Aus der reellen Fourierreihe \eqref{eq:Fourierreihe} ergibt sich mit Hilfe der
+Eulerformel $\eto{\ii nx} = \cos(nx)+\ii\sin(nx)$ durch Ersetzen von $\sin(nx)$
+und $\cos(nx)$ nach etwas Umsortieren die komplexe Darstellung
 \begin{equation}
 f(x) = \sum\limits_{n=-\infty}^{+\infty}c_n\eto{\ii nx}\,,
 \end{equation}
@@ -113,7 +115,7 @@ beziehungsweise $m$ indiziert werden ist dann\footnote{TODO: Physiker-Konvention
 Die Projektion $c_n = \left<n,f\right>$ von $f$ auf die Basisfunktion
 $\eto{\ii n x}$ benötigt dann die komplexe Konjugation der Basisfunktion,
 was das Minuszeichen im Exponenten von \eqref{eq:cn} im Rahmen einer
-geometrischen Interpretation erklärt.
+\glqq geometrischen\grqq Interpretation (Projektion!) erklärt.
 
 \subsection{Funktionen mit anderer Periodizität}
 
@@ -271,5 +273,3 @@ bla
 
 
 \end{document}
-
-
