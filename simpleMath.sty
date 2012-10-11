@@ -1,5 +1,16 @@
 \ProvidesPackage{simpleMath}
 
+%-----------------------------------------------------------------------
+% Math convenience package.
+%
+% Defines a lot of new commands.
+% There are three options that may be given to the package:
+% - round: use round instead of square paranthesis in vector and matrix commands
+% - oldvec: use vectors with an arrow ob top instead of bold italic letters
+% - Euler: use the Euler font for Euler's number e and the imaginary unit i
+%          (instead of Roman font)
+%-----------------------------------------------------------------------
+
 \RequirePackage{amsmath, amsfonts, amssymb}
 \RequirePackage{bm}
 \RequirePackage{bbm}
@@ -11,41 +22,55 @@
 %-----------------------------------------------------------------------
 % options:
 
-% option oldVec/newVec:
-\DeclareOption{newVec}{
+\newif\if@useoldvec
+\@useoldvecfalse
+\DeclareOption{oldvec}{\@useoldvectrue}
+
+\newif\if@useEuler
+\@useEulerfalse
+\DeclareOption{Euler}{\@useEulertrue}
+
+\newif\if@useRound
+\@useRoundfalse
+\DeclareOption{round}{\@useRoundtrue}
+
+\DeclareOption*{\PackageWarning{simpleMath}{Unknown option `\CurrentOption'}}
+\ProcessOptions\relax
+
+%-----------------------------------------------------------------------
+% Process all switch-like options:
+
+% use new or old vectors?
 \let\oldvec=\vec
-\renewcommand{\vec}[1]{{\ensuremath{\boldsymbol{#1}}}}} % Fette, kursive Vektoren; bold italic vectors
+\if@useoldvec
+\renewcommand{\vec}[1]{{\ensuremath{\oldvec{#1}}}} % Alte Vektoren mit Pfeil; old style vectors with arrows
+\else
+\renewcommand{\vec}[1]{{\ensuremath{\boldsymbol{#1}}}} % Fette, kursive Vektoren; bold italic vectors
+\fi
 
-\DeclareOption{oldVec}{
-\renewcommand{\vec}[1]{{\ensuremath{\oldvec{#1}}}}} % Normale Vektoren; ordinary vectors
-
-% option round/square brackets:
-\DeclareOption{round}{
-\newcommand{\lparan}{\left(}
-\newcommand{\rparan}{\right)}}
-
-\DeclareOption{square}{
-\newcommand{\lparan}{\left[}
-\newcommand{\rparan}{\right]}}
-
-
-% options for e and i:
-\DeclareOption{Euler}{
+% Roman e,i or Euler e,i?
+\if@useEuler
 % e und i in Euler font
 % e and i in Euler font
 \newcommand{\ee}{\ensuremath{\matheuler{e}}} % Euler Roman "e" als Euler-Zahl; Euler Roman "e" as the Euler number
-\newcommand{\ii}{\ensuremath{\matheuler{i}}}} % Euler Roman "i" als imaginäre Einheit.; Euler Roman imaginary unit "i"
-
-\DeclareOption{noEuler}{
+\newcommand{\ii}{\ensuremath{\matheuler{i}}} % Euler Roman "i" als imaginäre Einheit.; Euler Roman imaginary unit "i"
+\else
 % e und i in roman font
 % e and i in roman font
 \newcommand{\ee}{\ensuremath{\mathrm{e}}} %  Roman "e" als Euler-Zahl; Roman "e" as Euler number
-\newcommand{\ii}{\ensuremath{\mathrm{i}}}} %  Roman "i" als imaginäre Einheit; Roman "i" as imaginary unit
+\newcommand{\ii}{\ensuremath{\mathrm{i}}} %  Roman "i" als imaginäre Einheit; Roman "i" as imaginary unit
+\fi
 
-\DeclareOption*{\PackageWarning{simpleMath}{Unknown option `\CurrentOption'}}
-\ExecuteOptions{newVec, square, noEuler} % standard options
-\ProcessOptions\relax
+% Square or round parenthesis?
+\if@useRound
+\newcommand{\lparan}{\ensuremath{\left(}}
+\newcommand{\rparan}{\ensuremath{\right)}}
+\else
+\newcommand{\lparan}{\ensuremath{\left[}}
+\newcommand{\rparan}{\ensuremath{\right]}}
+\fi
 
+%-----------------------------------------------------------------------
 %
 % My own operators and environments
 % Eigene Operatoren, Umgebungen
