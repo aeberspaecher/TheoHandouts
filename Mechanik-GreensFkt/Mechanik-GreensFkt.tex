@@ -235,13 +235,16 @@ Mögliche Darstellungen sind beispielsweise
     \end{equation}
     ist ebenfalls im selben Limes eine Darstellung der Delta-Funktion.
 \end{description}
-    Die folgende Abbildung illustriert die verschiedenen Darstellungen
-    mit verschiedenen Werten für $\epsilon$.
-    \begin{center}
-        \includegraphics[width=0.7\textwidth]{delta-plot.pdf}
-    \end{center}
-    Von links nach rechts sind Rechteck-, Gauß-, Lorentz- und
-    Sinc-Darstellungen geplottet.
+Abbildung \ref{fig:Delta} illustriert die verschiedenen Darstellungen mit
+verschiedenen Werten für $\epsilon$.
+\begin{figure*}[!htb]
+    \centering
+    \input{delta-plot.pgf}
+    \caption{Von links nach rechts sind an verschiedenen Zeiten $t'$
+    lokalisierte Rechteck-, \mbox{Gauß-,} Lorentz- und Sinc-Darstellungen
+    $\delta_\epsilon(t-t')$ der Delta-Funktion $\delta(t-t')$ geplottet.}
+    \label{fig:Delta}
+\end{figure*}
 
 
 \subsection{Fourier-Darstellung der Delta-Funktion}
@@ -441,19 +444,23 @@ Abtasteigenschaft \eqref{eq:Abtast}
 Wir machen nun noch den Nenner der Amplitude reell und bilden den Realteil und
 erhalten als Endergebnis das schon aus der Vorlesung bekannte Resultat
 \begin{equation}
-\xinhom(t) = \frac{f_0}{(\omega_0^2 - \Omega^2)^2 + \gamma^2\Omega^2}\cos(\Omega t + \varphi)\,,
+\xinhom(t) = \underbrace{\frac{f_0}{(\omega_0^2 - \Omega^2)^2 + \gamma^2\Omega^2}}_{=: A}\cos(\Omega t + \varphi)\,,
 \end{equation}
 in dem $\varphi$ die (hier nicht explizit angegebene) Phasenverschiebung der Schwingung
 ist.
 
-Folgender Plot zeigt nochmals für feste Frequenz $\omega_0$ des ungedämpften
-Systems die Abhängigkeit des Amplitudenfaktors von der Frequenz $\Omega$ des
-Antriebs für verschiedene Dämpfungen $\gamma$.
-\begin{center}
-    \includegraphics[width=0.7\textwidth]{ampl-plot.pdf}
-\end{center}
-Höhere Kurven gehören zu kleineren Dämpfungen. Die Maxima der Kurven gehören zu
-den jeweiligen Resonanzfrequenzen.
+Abbildung \ref{fig:Ampls} zeigt nochmals für feste Frequenz $\omega_0$ des
+ungedämpften Systems die Abhängigkeit des Amplitudenfaktors $A$ von der
+Frequenz $\Omega$ des Antriebs für verschiedene Dämpfungen $\gamma$.
+\begin{figure}[!htb]
+    \centering
+    \input{ampl-plot.pgf}
+    \caption{Abhängigkeit der Amplitude $A$ von $\xinhom(t)$ als Funktion das
+    Verhältnisses $\Omega/\omega_0$. Höhere Kurven gehören zu kleineren
+    Dämpfungen. Die Maxima der Kurven entsprechen den jeweiligen
+    Resonanzfrequenzen.}
+    \label{fig:Ampls}
+\end{figure}
 
 
 \section{Greensche Funktionen in anderen Gebieten der Physik}

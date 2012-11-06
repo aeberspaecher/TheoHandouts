@@ -5,7 +5,10 @@
 """
 
 import numpy as np
+import matplotlib as mpl
+mpl.use("module://backend_pgf")
 import matplotlib.pyplot as plt
+plt.figure(figsize=(5,3))
 
 
 def rectangle(x, x0, epsilon):
@@ -32,39 +35,39 @@ def sinc(x, x0, epsilon):
 
 
 if(__name__ == '__main__'):
-    x = np.linspace(-3, +3, 5000)
+    x = np.linspace(-3, +3, 750)
 
     yRect1 = rectangle(x, -2.0, 0.5)
     yRect2 = rectangle(x, -2.0, 0.3)
     yRect3 = rectangle(x, -2.0, 0.2)
-    plt.plot(x, yRect1, c="b", lw=2, ls="-.")
-    plt.plot(x, yRect2, c="b", lw=2, ls="--")
-    plt.plot(x, yRect3, c="b", lw=2, ls="-")
+    plt.plot(x, yRect1, c="b", lw=1.25, ls="-.")
+    plt.plot(x, yRect2, c="b", lw=1.25, ls="--")
+    plt.plot(x, yRect3, c="b", lw=1.25, ls="-")
 
     yGauss1 = gauss(x, -1.0, 0.35)
     yGauss2 = gauss(x, -1.0, 0.15)
     yGauss3 = gauss(x, -1.0, 0.075)
-    plt.plot(x, yGauss1, c="r", lw=2, ls="-.")
-    plt.plot(x, yGauss2, c="r", lw=2, ls="--")
-    plt.plot(x, yGauss3, c="r", lw=2, ls="-")
+    plt.plot(x, yGauss1, c="r", lw=1.25, ls="-.")
+    plt.plot(x, yGauss2, c="r", lw=1.25, ls="--")
+    plt.plot(x, yGauss3, c="r", lw=1.25, ls="-")
 
     yLor1 = lorentz(x, 0.0, 0.25)
     yLor2 = lorentz(x, 0.0, 0.125)
     yLor3 = lorentz(x, 0.0, 0.07)
-    plt.plot(x, yLor1, c="black", lw=2, ls="-.")
-    plt.plot(x, yLor2, c="black", lw=2, ls="--")
-    plt.plot(x, yLor3, c="black", lw=2, ls="-")
+    plt.plot(x, yLor1, c="black", lw=1.25, ls="-.")
+    plt.plot(x, yLor2, c="black", lw=1.25, ls="--")
+    plt.plot(x, yLor3, c="black", lw=1.25, ls="-")
 
     ySinc1 = sinc(x, 2.001, 0.6)
     ySinc2 = sinc(x, 2.001, 0.5)
     ySinc3 = sinc(x, 2.001, 0.4)
-    plt.plot(x, ySinc1, c="gray", lw=2, ls="-.")
-    plt.plot(x, ySinc2, c="gray", lw=2, ls="--")
-    plt.plot(x, ySinc3, c="gray", lw=2, ls="-")
+    plt.plot(x, ySinc1, c="gray", lw=1.25, ls="-.")
+    plt.plot(x, ySinc2, c="gray", lw=1.25, ls="--")
+    plt.plot(x, ySinc3, c="gray", lw=1.25, ls="-")
 
     plt.xlabel("$t$")
     plt.ylabel("$\delta_\epsilon$")
     plt.tight_layout()
 
     #plt.show()
-    plt.savefig("delta-plot.pdf")
+    plt.savefig("delta-plot.pgf")
