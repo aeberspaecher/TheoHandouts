@@ -52,11 +52,11 @@
 
 \begin{document} \maketitle \begin{abstract} Zur Lösung inhomogener
 Differentialgleichungen wird die Methode der Greenschen Funktion ohne
-Strenge eingeführt. Nach einer kurzen Besprechung von
-Fourier-Transformation und Delta-Distribution als notwendiges Handwerkszeug
-wird anhand des gedämpften harmonischen Oszillators der Methode vorgestellt.
-Ziel ist es, in diesem ersten Kontakt im dritten Semester die Idee hinter
-Greenschen Funktionen an einem bekannten Beispiel zu illustrieren.\\[0.5ex]
+Strenge eingeführt. Nach einer kurzen Besprechung von Fourier-Transformation
+und Delta-Distribution als notwendiges Handwerkszeug wird anhand getriebener
+Schwingungen die Methode vorgestellt. Ziel ist es, in diesem ersten Kontakt
+im dritten Semester die Idee hinter Greenschen Funktionen an einem bekannten
+Beispiel zu illustrieren.\\[0.5ex]
 Literatur: Kuypers \cite{Kuypers}, Arfken\&Weber \cite{Arfken}
 \end{abstract}
 
@@ -67,9 +67,9 @@ Beliebige lineare Differentialgleichungen für die Funktion $x = x(t)$
 \begin{equation}
 f\left(x(t), \dot{x}(t), \dots, x^{(n)}, t\right) = g(t)
 \end{equation}
-mit linearem $f$ können wir nach den Begriffen \emph{homogen} und \emph
-{inhomogen} kategorisieren. Bei homogen Differentialgleichungen ist die
-rechte Seite $g(t) = 0$, wohingegen sie für inhomogene
+(mit \emph{linearem} $f$) können wir nach den Begriffen \emph{homogen} und
+\emph{inhomogen} kategorisieren. Bei homogen Differentialgleichungen ist
+die rechte Seite $g(t) = 0$, wohingegen sie für inhomogene
 Differentialgleichungen ungleich $0$ ist. Die Lösung für eine inhomogene
 Gleichung ist die Summe der Lösung $\xhom(t)$ der homogenen Gleichung und
 der partikulären Lösung $\xinhom(t)$ der inhomogenen Gleichung.
@@ -126,11 +126,14 @@ Fouriertransformierte
 \label{eq:FT}
 \end{equation}
 beschreibt dabei im Sinne einer Projektion auf eine Basis nichts anderes als
-den Anteil der Funktion $x$, der auf die Frequenz $\omega$ entfällt.
-Beachten Sie, dass es viele verschiedene Konventionen für die
-Fourier-Transformation gibt (Normierung und Frequenz/Kreisfrequenz).\footnote
-{Welche davon benutzt wird ist für die meisten Zwecke ohne Belang, solange
-eine Konvention \emph{konsistent} verwendet wird.}
+den Anteil der Funktion $x$, der auf die Frequenz $\omega$ entfällt. Neben
+dem Pärchen $t \leftrightarrow \omega$ bilden auch Ort und Wellenzahl, $x
+\leftrightarrow k$, ein konjugiertes Variablenpaar. Verschiedene
+Fouriertransformierte finden Sie tabelliert, beispielsweise in \cite
+{Gradshteyn}. Beachten Sie, dass es viele verschiedene Konventionen für die
+Fourier-Transformation gibt (Normierung und Frequenz/Kreisfrequenz).
+\footnote {Welche davon benutzt wird ist für die meisten Zwecke ohne Belang,
+solange eine Konvention \emph{konsistent} verwendet wird.}
 
 Die Fourier-Transformation ist von herausragender Bedeutung
 für viele Probleme der Physik -- so lassen sich beispielsweise
@@ -143,24 +146,21 @@ Verteilungen $f(x)$ beziehungsweise $\tilde f(k)$) mit der
 de-Broglie-Beziehung $p=\hbar k$ als Heisenbergsche Unschärferelation
 $\sigma_x \sigma_p \ge \hbar/2$ wieder.
 
-Verschiedene Fouriertransformierte finden Sie tabelliert, beispielsweise in
-\cite{Gradshteyn}.
-
 
 \section{Wie modelliert man einen Hammerschlag? - Die Delta-\glqq Funktion\grqq}
 
 \subsection{Was passiert bei einem Hammerschlag? Was ist eine Punktladung?}
 
 Ein idealisierter Hammerschlag überträgt während eines einzigen Zeitpunktes
-$t_0$ einen bestimmten Impuls $\Delta p$ auf einen Körper. Nach $F=\dot{p}$
+$t'$ einen bestimmten Impuls $\Delta p$ auf einen Körper. Nach $F=\dot{p}$
 beziehungsweise $F\Delta t = \Delta p$ erwartet man für eine gegen Null
 strebende Kontaktzeit $\Delta t$ also eine unendlich große Kraft. Das
 mathematische Konstrukt, das die Eigenschaft hat, unter einem Integral
-einen bestimmten Wert zu liefern, obwohl es überall außer bei $t=t_0$ gleich
+einen bestimmten Wert zu liefern, obwohl es überall außer bei $t=t'$ gleich
 $0$ ist, werden wir die $\delta$-Funktion nennen. Für unseren Hammerschlag
-zum Zeitpunkt $t_0$ schreiben wir
+zum Zeitpunkt $t'$ schreiben wir
 \begin{equation}
-F = \Delta p \delta(t-t_0)\,.
+F = \Delta p \delta(t-t')\,.
 \end{equation}
 
 Obwohl es sich bei der $\delta$-\glqq Funktion\grqq eigentlich um eine
@@ -171,15 +171,14 @@ handelt, werden wir hier sehr lax von \emph{Funktion} sprechen.
 
 Wir definieren die Delta-Funktion durch folgende Eigenschaft:
 \begin{equation}
-\int\limits_{-\infty}^{+\infty} \delta(t-t_0) f(t) \,\dd t = f(t_0)\,;
+\int\limits_{-\infty}^{+\infty} \delta(t-t') f(t) \,\dd t = f(t')\,;
 \label{eq:Abtast}
 \end{equation}
-diese sogenannte Abtasteigenschaft bedeutet, dass ein Integral über ein
-Produkt von einer Testfunktion $f(t)$ und der Delta-Funktion $\delta(t-t_0)$
-gerade den Funktionswert $f(t_0)$ an der Nullstelle $t_0$ des Arguments der
-Delta-Funktion ergibt.
-
-Insbesondere ist mit $f(x) \equiv 1$ die Fläche unter der Delta-Funktion
+diese sogenannte \glqq Abtasteigenschaft\grqq~bedeutet, dass ein Integral
+über ein Produkt einer Testfunktion $f(t)$ und der Delta-Funktion
+$\delta(t-t')$ gerade den Funktionswert $f(t')$ an der Nullstelle $t'$ des
+Arguments der Delta-Funktion ergibt. Insbesondere ist mit $f(x) \equiv 1$
+die Fläche unter der Delta-Funktion
 \begin{equation}
 \int\limits_{-\infty}^{+\infty} 1 \,\delta(t)\,\dd t = 1
 \end{equation}
@@ -200,24 +199,24 @@ Q = \int_{\Reals^3}\!\dd V \rho(\vec r)
 \subsection{Darstellungen der Delta-Funktion}
 
 Die Delta-Funktion kann als Grenzwert $\lim_{\epsilon}\delta_\epsilon(t -
-t_0) = \delta(t-t_0)$ einer Funktionenfolge $\delta_\epsilon$ verstanden
+t') = \delta(t-t')$ einer Funktionenfolge $\delta_\epsilon$ verstanden
 werden. Die Visualisierung dieser Folgen dient der Anschauung. Rechnungen mit
 der Delta-Funktion können mit Hilfe dieser Darstellungen gemacht werden,
 indem Grenzwert-Bildung und Integration vertauscht werden.
 
 Mögliche Darstellungen sind beispielsweise
 \begin{description}
-    \item[Rechteck] Das Rechteck
+    \item[Kasten] Der \glqq Kasten\grqq~
     \begin{equation}
-    \delta_\epsilon(t-t_0) = \left\{\begin{array}{l l}\frac{1}{\epsilon} & \qquad t_0-\frac{\epsilon}{2} < t < t_0+\frac{\epsilon}{2}\\ 0 &\qquad\mathrm{sonst}\end{array}\right.
+    \delta_\epsilon(t-t') = \left\{\begin{array}{l l}\frac{1}{\epsilon} & \qquad t'-\frac{\epsilon}{2} < t < t'+\frac{\epsilon}{2}\\ 0 &\qquad\mathrm{sonst}\end{array}\right.
     \end{equation}
     der Breite $\epsilon$ und Höhe $1/\epsilon$ hat die Fläche $1$. Im Limes
-    $\lim\limits_{\epsilon\to0}\delta_\epsilon$ ergibt sich die
-    Delta-Funktion.
+    $\lim\limits_{\epsilon\to0}\delta_\epsilon(t-t')$ ergibt sich die
+    Delta-Funktion $\delta(t-t')$.
 
     \item[Gauß] Die Gauß-Glockenkurve
     \begin{equation}
-    \delta_\epsilon(t-t_0) = \frac{1}{\sqrt{2\pi}\epsilon} \eto{-(t-t_0)^2/2\epsilon^2}
+    \delta_\epsilon(t-t') = \frac{1}{\sqrt{2\pi}\epsilon} \eto{-(t-t')^2/2\epsilon^2}
     \end{equation}
     mit Breite (Standardabweichung) $\epsilon$ ist ebenfalls auf die Fläche
     $1$ normiert. Im Limes $\epsilon \to 0$ geht dann hier auch die Breite
@@ -225,13 +224,13 @@ Mögliche Darstellungen sind beispielsweise
     strebt.
     \item[Lorentz] Bei der Lorentz-Kurve
     \begin{equation}
-    \delta_\epsilon(t-t_0) = \frac{1}{\pi}\frac{\epsilon}{(t-t_0)^2 + \epsilon^2}
+    \delta_\epsilon(t-t') = \frac{1}{\pi}\frac{\epsilon}{(t-t')^2 + \epsilon^2}
     \end{equation}
     ist $\epsilon$ ebenfalls ein Maß für die Breite. Der relevante Limes ist
     analog zur Gauß-Glocke.
     \item[Sinc] Die Sinc-Funktion
     \begin{equation}
-    \delta_\epsilon(t-t_0) = \frac{1}{\epsilon} \frac{\sin((t-t_0)/\epsilon)}{t-t_0}
+    \delta_\epsilon(t-t') = \frac{1}{\epsilon} \frac{\sin((t-t')/\epsilon)}{t-t'}
     \end{equation}
     ist ebenfalls im selben Limes eine Darstellung der Delta-Funktion.
 \end{description}
@@ -241,18 +240,17 @@ verschiedenen Werten für $\epsilon$.
     \centering
     \input{delta-plot.pgf}
     \caption{Von links nach rechts sind an verschiedenen Zeiten $t'$
-    lokalisierte Rechteck-, \mbox{Gauß-,} Lorentz- und Sinc-Darstellungen
+    lokalisierte Kasten-, \mbox{Gauß-,} Lorentz- und Sinc-Darstellungen
     $\delta_\epsilon(t-t')$ der Delta-Funktion $\delta(t-t')$ geplottet.}
     \label{fig:Delta}
 \end{figure*}
-
 
 \subsection{Fourier-Darstellung der Delta-Funktion}
 
 Später wird die Fourier-Darstellung der Delta-Funktion von Bedeutung sein.
 Um diese zu erhalten, benutzen wir die Fourier-Darstellung \eqref{eq:IFT}
 einer Funktion $x(t)$ und setzen in diese die Fourier-Transformierte $\tilde
-x(\omega)$ aus \eqref{eq:FT} ein und erhalten
+x(\omega)$ aus \eqref{eq:FT} ein und erhalten so
 \begin{equation}
 x(t) = \frac{1}{2\pi}\int\limits_{-\infty}^{+\infty}\!\dd\omega \left( \int\limits_{-\infty}^{+\infty}\!\dd t' x(t') \eto{-\ii\omega t'} \right) \eto{\ii \omega t}\,,
 \end{equation}
@@ -291,7 +289,7 @@ Fouriertransformation beider Seiten dieser Gleichung führt auf
 woraus wir mit \eqref{eq:DeltaFT} schließlich durch Umbennen $\omega
 \leftrightarrow t$
 \begin{equation}
-\FT\{ \cos(\omega_0 t) \} = \pi(\delta(\omega-\omega_0) + \delta(\omega+\omega_0))\,.
+\FT\{ \cos(\omega_0 t) \} = \pi\left[\delta(\omega-\omega_0) + \delta(\omega+\omega_0)\right]\,.
 \end{equation}
 berechnen.
 
@@ -324,6 +322,7 @@ mit dem wir die homogene Gleichung als
 und die inhomogene Gleichung als
 \begin{equation}
 \Dt \xinhom(t) = f(t)
+\label{eq:inhomLsg}
 \end{equation}
 schreiben können. Dass das behauptete $x(t)$ aus \eqref{eq:Sol} tatsächlich
 eine Lösung der inhomogenen Differentialgleichung ist zeigen wir, indem wir
@@ -331,21 +330,21 @@ $\Dt$ auf $x(t)$ anwenden:
 \begin{equation}
 \Dt x(t) = \underbrace{\Dt \xhom(t)}_{=0} + \underbrace{\Dt \xinhom(t)}_{=f(t)} = f(t)\,.
 \end{equation}
-Für die homogene Lösung ergibt sich im Fall \glqq schwacher Dämpfung\grqq~(
-$\gamma < 2\omega_0)$ mit $\omega = \sqrt{\omega_0^2 - \gamma/4}$ die
+Für die homogene Lösung ergibt sich im Fall \glqq schwacher Dämpfung\grqq~
+($\gamma < 2\omega_0)$ mit $\omega = \sqrt{\omega_0^2 - \gamma/4}$ die
 exponentiell ausdämpfende Lösung
 \begin{equation}
 \xhom(t) = A \eto{-(\ii \omega + \gamma/2)t}\,,
 \end{equation}
-weshalb nach einiger Zeit nur noch die partikuläre Lösung von Interesse sein
-wird.
+weshalb für große Zeiten $t$ nur noch die partikuläre Lösung von Interesse
+sein wird.
 
 \subsection{Taktik zur Berechnung der partikulären Lösung}
 
-Als Taktik werden wir die Differentialgleichung zunächst für einen einzelnen
-Delta-Kraftstoß mit Einheits-Impulsübertrag lösen. Diese Lösung, die
-sogenannte \emph{Greensche Funktion} oder \emph{Fundamentallösung} werden
-wir dann nutzen, um für beliebige (!) Inhomogenitäten eine Lösung der
+Als Lösungstaktik werden wir die Differentialgleichung zunächst für einen
+einzelnen Delta-Kraftstoß mit Einheits-Impulsübertrag lösen. Diese Lösung,
+die sogenannte \emph{Greensche Funktion} oder \emph{Fundamentallösung}
+werden wir dann nutzen, um für beliebige (!) Inhomogenitäten eine Lösung der
 Differentialgleichung anzugeben.
 
 \subsubsection{Erster Schritt: Zerlegung der Inhomogenität}
@@ -381,8 +380,9 @@ Zeiten $t'$ superponieren. Um zu zeigen, dass die Behauptung wahr ist,
 wenden wir $\Dt$ auf die linke Seite an:
 \begin{align}
 \Dt \xinhom(t) &= \int\limits_{-\infty}^{+\infty} \underbrace{\Dt G(t-t')}_{=\delta(t-t')} f(t') \,\dd t'\\
-&=f(t)\,.
+&=f(t)\,,
 \end{align}
+was exakt unsere Forderung \eqref{eq:inhomLsg} ist.
 
 \subsubsection{Anwendung auf die gedämpfte Schwingung}
 
@@ -429,6 +429,7 @@ Durch Rücktransformation in den Zeit-Bereich finden wir
 G(t-t') =\frac{1}{2\pi}\int\limits_{-\infty}^{+\infty}\frac{\eto{\ii\omega(t-t')}}{-\omega^2 + \ii\omega\gamma + \omega_0^2}\,\dd\omega\,.
 \label{eq:GreenZeit}
 \end{equation}
+
 Im Spezialfall der harmonischen treibenden Kraft $f(t) = f_0\eto{\ii\Omega t}$
 können wir mit \eqref{eq:GreenZeit} und \eqref{eq:InhomLsg} die partikuläre
 Lösung
