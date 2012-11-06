@@ -65,7 +65,7 @@ Literatur: Kuypers \cite{Kuypers}, Arfken\&Weber \cite{Arfken}
 
 Beliebige lineare Differentialgleichungen für die Funktion $x = x(t)$
 \begin{equation}
-f\left(x(t), \dot{x}(t), \dots, x^{(n)}, t\right) = g(t)
+f\left(x(t), \dot{x}(t), \dots, x^{(n)}\right) = g(t)
 \end{equation}
 (mit \emph{linearem} $f$) können wir nach den Begriffen \emph{homogen} und
 \emph{inhomogen} kategorisieren. Bei homogen Differentialgleichungen ist
@@ -236,7 +236,7 @@ Mögliche Darstellungen sind beispielsweise
 \end{description}
 Abbildung \ref{fig:Delta} illustriert die verschiedenen Darstellungen mit
 verschiedenen Werten für $\epsilon$.
-\begin{figure*}[!htb]
+\begin{figure*}[tb]
     \centering
     \input{delta-plot.pgf}
     \caption{Von links nach rechts sind an verschiedenen Zeiten $t'$
@@ -362,9 +362,14 @@ Lösung der Gleichung
 \begin{equation}
 \Dt G(t-t') = \delta(t-t')
 \end{equation}
-nennen wir die Greensche Funktion oder die Fundamentallösung. In dieser
-steckt die Information darüber, wie das System, das durch $\Dt$ beschrieben
-wird auf einen Delta-Kraftstoß antwortet.
+nennen wir die Greensche Funktion oder die Fundamentallösung.\footnote{Auch
+die Greensche Funktion ist eine \emph{Distribution} -- eine lineare, stetige
+Abbildung aus dem Raum der sogenannten Testfunktionen in komplexen Zahlen.
+Für unsere Zwecke genügt es, sich einfach zu merken, dass alle
+Distributionen am besten zusammen mit einer Testfunktion unter einem
+bestimmten Integral auftauchen, vetgleiche beispielsweise \eqref
+{eq:InhomLsg}.} In dieser steckt die Information darüber, wie das System,
+das durch $\Dt$ beschrieben wird auf einen Delta-Kraftstoß antwortet.
 
 \subsubsection{Dritter Schritt: $\xinhom$ zusammenbauen}
 
@@ -453,12 +458,12 @@ ist.
 Abbildung \ref{fig:Ampls} zeigt nochmals für feste Frequenz $\omega_0$ des
 ungedämpften Systems die Abhängigkeit des Amplitudenfaktors $A$ von der
 Frequenz $\Omega$ des Antriebs für verschiedene Dämpfungen $\gamma$.
-\begin{figure}[!htb]
+\begin{figure}[tb]
     \centering
     \input{ampl-plot.pgf}
     \caption{Abhängigkeit der Amplitude $A$ von $\xinhom(t)$ als Funktion das
     Verhältnisses $\Omega/\omega_0$. Höhere Kurven gehören zu kleineren
-    Dämpfungen. Die Maxima der Kurven entsprechen den jeweiligen
+    Dämpfungen $\gamma$. Die Maxima der Kurven entsprechen den jeweiligen
     Resonanzfrequenzen.}
     \label{fig:Ampls}
 \end{figure}
@@ -492,19 +497,20 @@ Durch Einsetzen in die Poisson-Gleichung finden Sie also
 \Delta\phi(\vec r) = \Delta\left(\frac{q}{4\pi\epsilon_0}\frac{1}{\abs{\vec r - \vec r'}}\right) = -\frac{q}{\epsilon_0} \delta^3(\vec r - \vec r')
 \end{equation}
 Durch Vergleich dieser Gleichung mit der Definition der Greenschen Funktion
-lesen wir die Fundamentallösung für den Laplace-Operator einfach ab
-als\footnote{Gelegentlich werden auch Definitionen für mit Minuszeichen für
-die Greensche Funktion benutzt.}
+lesen wir die Fundamentallösung für den Laplace-Operator $\Delta$ einfach ab
+als\footnote{Gelegentlich werden auch Definitionen mit Minuszeichen
+und/oder Faktoren von $4\pi$ für die Greensche Funktion benutzt.}
 \begin{equation}
 G(\vec r - \vec r') = -\frac{1}{4\pi}\frac{1}{\abs{\vec r - \vec r'}}\,.
 \end{equation}
-Für beliebige Ladungsdichten $\rho(\vec r)$ könenn Sie damit analog zu
+Für beliebige Ladungsdichten $\rho(\vec r)$ können Sie damit analog zu
 \eqref{eq:InhomLsg} das Potential $\phi(\vec r)$ berechnen als
 \begin{equation}
-\phi(\vec r) = -\int\limits_{\Reals^3}\!\dd V'\,\frac{1}{4\pi\epsilon_0}\frac{\rho(\vec r')}{\abs{\vec r - \vec r'}}\,.
+\phi(\vec r) = \int\limits_{\Reals^3}\!\dd V'\,\frac{1}{4\pi\epsilon_0}\frac{\rho(\vec r')}{\abs{\vec r - \vec r'}}\,.
 \end{equation}
-Beachten Sie, dass auf etwaige Komplikationen durch Randbedingungen an dieser
-Stelle nicht eingegangen wird.
+Hier wurde noch wie in der Poisson-Gleichung mit $-1/\epsilon_0$
+multipliziert. Beachten Sie, dass auf etwaige Komplikationen durch
+Randbedingungen an dieser Stelle nicht eingegangen wird.
 
 
 \bibliographystyle{ieeetr}
