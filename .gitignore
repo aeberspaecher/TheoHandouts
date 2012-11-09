@@ -20,3 +20,4 @@
 *.mtc
 *.mtc1
 *.out
+.waf*
