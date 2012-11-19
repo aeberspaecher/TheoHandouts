@@ -1,0 +1,54 @@
+\documentclass[compress]{beamer}
+%\documentclass[compress, handout]{beamer}
+
+% To create a handout: uncomment below and add handout as an option
+% for documentclass
+%\usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[a4paper, landscape, border shrink=5mm]
+
+% not all of the packages below will be needed
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{units}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[amssymb]{SIunits}
+\usepackage{amssymb}
+\usepackage{microtype}
+\usepackage{bbm}
+\usepackage{booktabs}
+\usepackage{simpleMath}
+
+\usepackage[TOC]{style} % add option 'TOC' if you want an Outline before every section
+
+\usepackage{graphicx}
+%\graphicspath{{Figures/}} % uncomment to use a standard graphics location
+
+
+\title{Chaos}
+\titlegraphic{\includegraphics[width=0.9\textwidth]{Figures/NAT_SIGN_druck_SW}}
+\subtitle{Eine (sehr) kurze Einführung} % (optional)
+\author{Alexander Eberspächer}
+
+\date{19. November 2012} % \today ?
+\subject{Chaos - eine kurze Einführung}
+
+
+\begin{document}
+
+\begin{frame} % title
+  \titlepage
+  \thispagestyle{empty}
+\end{frame}
+
+\begin{frame}{Outline} % first Outline
+  \tableofcontents
+\end{frame}
+
+% Input your presentation's contents here
+\input{Intro}
+\input{Chaos}
+\input{Concl}
+
+\end{document}
