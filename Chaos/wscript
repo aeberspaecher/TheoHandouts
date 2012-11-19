@@ -28,10 +28,3 @@ def build(ctx):
 def post(ctx):
     print("Copy PDF file to top directory")
     ctx.exec_command("cp {0}/talk.pdf".format(out) + " {0}".format(top))
-    if ctx.options.view:
-        print("Open PDF file in default PDF viewer")
-        ctx.exec_command("xdg-open {0}/talk.pdf".format(out))
-
-def options(ctx):
-        ctx.add_option("--view", action="store_true", default=False,
-                       help='view the PDf after it is built')
