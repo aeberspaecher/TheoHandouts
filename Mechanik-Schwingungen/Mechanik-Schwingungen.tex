@@ -51,7 +51,8 @@
 Als Ergänzung zur Vorlesung wird eine allgemeine Theorie für \emph{kleine}
 lineare Schwingungen um einen Gleichgewichtspunkt entwickelt. Beliebig viele
 Freiheitsgrade werden diskutiert. Außerdem werden sogenannte
-Normalschwingungen beschrieben.
+Normalschwingungen beschrieben. Als Beispiel werden die Schwingungen eines
+eines einfachen Moleküls modelliert.
 \end{abstract}
 
 \section{Einleitung - Schwingungen in einem Freiheitsgrad}
@@ -358,16 +359,17 @@ gehabt wird auch hier wieder Realteilbildung impliziert.
 
 \section{Normalkoordinaten}
 
-Die Normalschwingungen \eqref{eq:BewLsg} beschreiben einen speziellen Typus
-der Schwingung -- nämlich den, bei dem nur eine einzige Frequenz zur
-Schwingung beiträgt. Alle Freiheitsgrade schwingen mit der selben Frequenz.
-Bei diesen Schwingungen wird keine Energie zwischen den Freiheitsgraden
+Die einzelnen Summanden in Gleichung \eqref{eq:BewLsg} beschreiben einen
+speziellen Typus der Schwingung -- nämlich die sogenannten
+Normalschwingungen, bei denen nur eine einzige Frequenz zur Schwingung des
+Systems beiträgt. Alle Freiheitsgrade schwingen mit der selben Frequenz. Bei
+diesen Schwingungen wird keine Energie zwischen den Freiheitsgraden
 ausgetauscht. Bei einer allgemeinen Lösung (aus Normalschwingungen
 superponiert) ist dies nicht der Fall. Durch die Kopplung der verschiedenen
 Freiheitsgrade aneinander tragen mehrere Frequenzen zur Schwingung bei. Im
-Allgemeinen finden sich für $N$ gekoppelte Freiheitsgrade
-auch $N$ Frequenzen. Nehmen wir nun kurz an, wir fänden einen neuen Satz
-Koordinaten, in dem in der Bewegungsgleichung $\mathbf{T} \ddot{\vec\eta} +
+Allgemeinen finden sich für $N$ gekoppelte Freiheitsgrade auch $N$
+Frequenzen. Nehmen wir nun kurz an, wir fänden einen neuen Satz Koordinaten,
+in dem in der Bewegungsgleichung $\mathbf{T} \ddot{\vec\eta} +
 \mathbf{V}{\vec\eta} = \vec 0$ sowohl $\mathbf{T}$ als auch $\mathbf{V}$
 diagonal werden, so haben wir es mit $s$ entkoppelten Schwingungen zu tun.
 Wir wollen nun zeigen, dass es Koordinatentransformationen gibt, die genau
@@ -460,12 +462,17 @@ unter Verwendung von $\mathbf{A}^\mathrm{T}\mathbf{T}\mathbf{A}=\mathbf{1}$ auf
 \end{equation}
 Dieses Resultat interpretieren wir wie folgt: die Matrix $\mathbf{A}$ ist im
 Stande, \emph{gleichzeitig} $\mathbf{T}$ und $\mathbf{V}$ zu
-diagonalisieren. Die Gleichungen \eqref{eq:Tdiag} und \eqref{eq:Vdiag} haben
-außerdem die Form einer Ähn\-lich\-keits\-trans\-for\-mation
-$\diag(\lambda_1,\dots,\lambda_s) = \mathbf{B}^{-1}\mathbf{C}\mathbf{B}$,
-woraus wir (ohne strengen Beweis) schließen, dass $\mathbf{A}$ orthogonal
-ist, also $\mathbf{A}^\mathrm{T}\mathbf{A}=\mathbf{1}$ beziehungsweise
-$\mathbf{A}^{-1} = \mathbf{A}^{\mathrm{T}}$ gilt.
+diagonalisieren.
+
+Die Matrix $\mathbf{A}$ hat interessante Eigenschaften: sie ist in unseren
+Koordinaten ähnlich einer ortogonalen Matrix. Wenn wir Gleichung
+\eqref{eq:AMatrix} von rechts mit $\mathbf{A}^{-1}$ multiplizieren, so erhalten
+\begin{equation}
+\mathbf{A}^{-1} = \mathbf{A}^\mathrm{T}\mathbf{T}\,.
+\label{eq:Ainverse}
+\end{equation}
+In massegewichteten Koordinaten $\xi_i = \sqrt{m}_i \eta_i$ wäre $\mathbf{A}$
+sogar orthogonal.
 
 Die Koordinatentransformationen
 \begin{equation}
@@ -474,7 +481,7 @@ Die Koordinatentransformationen
 \end{equation}
 beziehungsweise
 \begin{equation}
-\vec Q = \mathbf{A}^{-1}\vec \eta = \mathbf{A}^{\mathrm{T}}\vec \eta
+\vec Q = \mathbf{A}^{-1}\vec \eta = \mathbf{A}^{\mathrm{T}}\mathbf{T}\vec \eta
 \label{eq:Normalkoordinaten}
 \end{equation}
 liefert die sogenannten \emph{Haupt}- oder \emph{Normalkoordinaten} $\vec{Q}$.
@@ -509,7 +516,7 @@ Im Beispiel mit den zwei gekoppelten Federschwingern haben wir zwei Frequenzen
 als Lösung gefunden. Die beiden zugehörigen Amplituden $\vec A$ bilden dann die
 Matrix
 \begin{equation}
-\mathbf{A} = \frac{1}{2m}\twoMatrix{1}{1}{1}{-1}\, ,
+\mathbf{A} = \frac{1}{\sqrt{2m}}\twoMatrix{1}{1}{1}{-1}\, ,
 \end{equation}
 die bereits so normiert wurde, dass
 \begin{align}
@@ -518,11 +525,11 @@ die bereits so normiert wurde, dass
 \end{align}
 Die zugehörigen Koordinaten $\vec Q$ ergeben sich aus
 \begin{align}
-\vec{Q} = \mathbf{A}^\mathrm{T} \vec{\eta} = \frac{1}{\sqrt{2m}}\ZweierVec{\eta_1 + \eta_2}{\eta_1-\eta_2}
+\vec{Q} = \mathbf{A}^\mathrm{T} \mathbf{T} \vec{\eta} = \sqrt{\frac{m}{2}}\ZweierVec{\eta_1 + \eta_2}{\eta_1-\eta_2}
 \end{align}
-was konsistent mit der vorherigen Rechnung ist: die Koordinate $Q_1 = \eta_1 + \eta_2$
+was konsistent mit der vorherigen Rechnung ist: die Koordinate $Q_1 \propto \eta_1 + \eta_2$
 beschreibt die gleichphasige Schwingung mit der Frequenz $\sqrt{D/m}$, in der
-Koordinate $Q_2 = \eta_1 - \eta_2$ hingegen finden wir eine gegenphasige
+Koordinate $Q_2 \propto \eta_1 - \eta_2$ hingegen finden wir eine gegenphasige
 Schwingung der beiden Massen mit der Frequenz $\sqrt{(D+2\tilde D)/m}$.
 
 \section{Ein komplett gerechnetes Beispiel: lineares CO\textsubscript{2}}
@@ -597,11 +604,11 @@ Wenn wir damit die Vektoren $\vec A_r$ gemäß $\vec A_r \to \vec A_r' = C_r
 \vec A_r$ neu normieren, so können wir nach \eqref{eq:AMatrix} die
 Transformationsmatrix $\mathbf A = [\vec A_1', \dots, \vec A_s']$
 aufschreiben und nach \eqref{eq:Normalkoordinaten} auf die Normalkoordinaten
-$\vec Q$ transformieren. Es
+$\vec Q$ transformieren. Mit $\mathbf{A}^{-1}=\mathbf{A}^{\mathrm{T}}\mathbf{T}$
 ergeben sich
 \begin{align}
 Q_1 &= \frac{1}{\sqrt{M+2m}}(m\eta_1 + M\eta_2 + m\eta_3)\,,\\
-Q_2 &= \frac{m}{2}(\eta_1 - \eta_3)\,,\\
+Q_2 &= \sqrt{\frac{m}{2}}(\eta_1 - \eta_3)\,,\\
 Q_3 &= \frac{mM}{\sqrt{2(M+2m)}}(\eta_1 - 2\eta_2 + \eta_3)\,.
 \end{align}
 In diesen Koordinaten schwingen entkoppeln die Bewegungsgleichungen, und im
@@ -627,6 +634,24 @@ Molekülachse) können wir aufgrund der Symmetrie des Moleküls auf jeden Fall
 sagen, dass sie entartet sein müssen! Das kommt daher, dass die beiden
 unabhängigen (zueinander senkrechten) Richtungen senkrecht zur Längsachse
 komplett gleichwertig sind.
+
+Ein echtes Infrarot-Absorptionsspektrum von CO\textsubscript{2} ist in
+Abbildung \ref{fig:Spektrum} gezeigt. Beachten Sie, dass die symmetrische
+Schwingung mit Frequenz $\omega_2$ fehlt -- dies liegt daran, dass sich bei
+dieser Schwingung das Dipolmoment des Moleküls nicht ändert.
+
+\begin{figure}
+    \centering
+    \input{CO2-IR.pgf}
+    \caption{Infrarot-Transmissions-Spektrum von CO\textsubscript{2}. Der
+    Dip bei Wellenzahl $\sim \unit{2349}{cm^-1}$ gehört zu Anregungen der
+    antisymmetrischen Schwingung mit $\omega_3$. Der Dip bei $\sim
+    \unit{667}{cm^-1}$ gehört zu den entarteten Schwingungen senkrecht zur
+    Molekülachse. Die symmetrische Schwingung mit Frequenz $\omega_2$ ist
+    nicht infrarot-aktiv, siehe dazu auch den Text.
+    (Quelle Daten: \url{http://webbook.nist.gov/chemistry})}
+    \label{fig:Spektrum}
+\end{figure}
 
 \bibliographystyle{ieeetr}
 
