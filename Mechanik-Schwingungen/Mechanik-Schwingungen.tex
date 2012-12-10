@@ -409,12 +409,13 @@ Ausklammern auf der linken Seite führt zu
 \begin{equation}
 \left( \omega_m^2 - \omega_n^2\right) \vec A^\mathrm{T}_n\mathbf{T}\vec{A}_m = 0\,.
 \end{equation}
-Nehmen wir nun an, dass alle Frequenzen $\omega$ verschieden sind. Dann kann die
-letzte Gleichung nur dann wahr sein, wenn für $n\ne m$ gerade
-$\vec A^\mathrm{T}_n\mathbf{T}\vec{A}_m = 0$ gilt. Betrachten wir nun eine
-Schwingung, also ein festes $n=m$. Aus physikalischen Gründen ist die kinetische
-Energie positiv (außer an den Umkehrpunkten der Bewegung). Das wird führt dazu, dass
-wir mit dem Realteil der Lösung der Bewegungsgleichung \eqref{eq:SchwingR} folgendes schreiben können:
+Nehmen wir nun an, dass alle Frequenzen $\omega$ verschieden sind. Dann kann
+die letzte Gleichung nur dann wahr sein, wenn für $n\ne m$ gerade $\vec
+A^\mathrm{T}_n\mathbf{T}\vec{A}_m = 0$ gilt. Betrachten wir nun eine
+Schwingung, also ein festes $n=m$. Aus physikalischen Gründen ist die
+kinetische Energie positiv (außer an den Umkehrpunkten der Bewegung). Das
+führt dazu, dass wir mit dem Realteil der Lösung der Bewegungsgleichung
+\eqref{eq:SchwingR} folgendes schreiben können:
 \begin{align}
 \vec{\eta}(t) &= \abs{C_n}\vec{A}_n \cos(-\omega_n t+\varphi_0)\nonumber\\
 \Rightarrow \dot{\vec \eta}(t) &=  \omega_n \abs{C_n}\vec{A}_n \sin(-\omega_n t+\varphi_0)\,.
@@ -432,11 +433,11 @@ die Amplituden $\vec{A}_n$ und die Skalenfaktoren $C_n$ so wählen, dass
 \vec A^\mathrm{T}_n\mathbf{T}\vec{A}_n = 1
 \label{eq:Anorm}
 \end{align}
-(\emph{keine} Summation in $n$) wird! An diese Stelle wird nochmals deutlich, weshalb die $C$-Faktoren
-überhaupt eingeführt wurden. Nun können wir alle Amplitudenvektoren $\vec
-A_n$ in eine einzige Matrix zusammenfassen:
+(\emph{keine} Summation in $n$) wird! An diese Stelle wird nochmals
+deutlich, weshalb die $C$-Faktoren überhaupt eingeführt wurden. Nun können
+wir alle Amplitudenvektoren $\vec A_n$ in eine einzige Matrix zusammenfassen:
 \begin{equation}
-\mathbf{A} := \threeMatrix{A_{11}}{\dots}{A_{1s}}{\vdots}{\ddots}{\vdots}{A_{s1}}{\dots}{A_{ss}} = \left[\vec A_1\; \dots\;\vec A_3\right]\,.
+\mathbf{A} := \threeMatrix{A_{11}}{\dots}{A_{1s}}{\vdots}{\ddots}{\vdots}{A_{s1}}{\dots}{A_{ss}} = \left[\vec A_1\; \dots\;\vec A_s\right]\,.
 \label{eq:AMatrix}
 \end{equation}
 Nun können wir alle $s$ Gleichungen \eqref{eq:Anorm} (für alle $s$ Frequenzen
@@ -493,7 +494,7 @@ Lagrange-Funktion \eqref{eq:MatrixLagrange} ein:
 L(\vec q, \dot{\vec q}) &= \frac{1}{2}\left(\dot{\vec{\eta}}^\mathrm{T}\mathbf{T}\dot{\vec{\eta}} - \vec{\eta}^\mathrm{T}\mathbf{V}\vec{\eta}\right)\,,\nonumber\\
 \Leftrightarrow L(\vec Q, \dot{\vec Q}) &= \frac{1}{2}\left( (\mathbf{A}\dot{\vec Q})^\mathrm{T}\mathbf{T}(\mathbf{A}\dot{\vec Q}) - (\mathbf{A}{\vec Q})^\mathrm{T}\mathbf{V}(\mathbf{A}{\vec Q}) \right) \nonumber\\
 &= \frac{1}{2}\left(\dot{\vec{Q}}^\mathrm{T}\underbrace{\mathbf{A}^\mathrm{T}\mathbf{T}\mathbf{A}}_{=\mathbf{1}}\dot{\vec{Q}} - \vec{Q}^\mathrm{T}\underbrace{\mathbf{A}^\mathrm{T}\mathbf{V}\mathbf{A}}_{=\mathbf{\Omega}^2}\vec{Q}\right)\nonumber\\
-&= \frac{1}{2}\left(\dot{\vec{Q}}^\mathrm{T}\dot{\vec Q} - \dot{\vec{Q}}^\mathrm{T}\mathbf{\Omega}^2\dot{\vec Q}\right)\,,
+&= \frac{1}{2}\left(\dot{\vec{Q}}^\mathrm{T}\dot{\vec Q} - {\vec{Q}}^\mathrm{T}\mathbf{\Omega}^2{\vec Q}\right)\,,
 \end{align}
 beziehungsweise in Komponentendarstellung
 \begin{equation}
@@ -554,8 +555,8 @@ V =\frac{1}{2}\left(\eta_2 - \eta_1\right)^2 + \frac{1}{2}D\left(\eta_3 - \eta_2
 Die $\mathbf T$- und $\mathbf V$-Matrizen lesen wir gemäß \eqref
 {eq:Tapprox} und \eqref{eq:Vapprox} ab als
 \begin{align}
-T &= \begin{bmatrix}m & 0 & 0\\0 & M & 0\\ 0 & 0 & m\end{bmatrix}\,,\\
-V &= D\threeMatrix{1}{-1}{0}{-1}{2}{-1}{0}{-1}{1}\,.
+\mathbf T &= \begin{bmatrix}m & 0 & 0\\0 & M & 0\\ 0 & 0 & m\end{bmatrix}\,,\\
+\mathbf V &= D\threeMatrix{1}{-1}{0}{-1}{2}{-1}{0}{-1}{1}\,.
 \end{align}
 Die Frequenzen $\omega_r$ erhalten wir als Lösungen von Gleichung \eqref{eq:Det}.
 Dieses Polynom lautet für unser CO\textsubscript{2}-Molekül
