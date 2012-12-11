@@ -383,8 +383,10 @@ $\vec A_m$ bezeichnet. Wir betrachten nochmals die Gleichung \eqref{eq:EWlike},
 die wir für die $m$-te beziehungsweise die $n$-te Frequenz als
 \begin{align}
 \omega_m^2\mathbf{T}\vec{A}_m = \mathbf{V}\vec{A}_m\, ,\qquad m=1,\dots,s
+\label{eq:VGl1}
 \intertext{und}
 \omega_n^2\mathbf{T}\vec{A}_n = \mathbf{V}\vec{A}_n\, ,\qquad n=1,\dots,s
+\label{eq:VGl2}
 \end{align}
 schreiben können. Diese Gleichungen verknüpfen (für feste $m,n$) jeweils
 zwei Vektoren mit jeweils $s$ Komponenten miteinander. Multiplizieren wir
@@ -410,8 +412,12 @@ Ausklammern auf der linken Seite führt zu
 \left( \omega_m^2 - \omega_n^2\right) \vec A^\mathrm{T}_n\mathbf{T}\vec{A}_m = 0\,.
 \end{equation}
 Nehmen wir nun an, dass alle Frequenzen $\omega$ verschieden sind. Dann kann
-die letzte Gleichung nur dann wahr sein, wenn für $n\ne m$ gerade $\vec
-A^\mathrm{T}_n\mathbf{T}\vec{A}_m = 0$ gilt. Betrachten wir nun eine
+die letzte Gleichung nur dann wahr sein, wenn für $n\ne m$ gerade
+\begin{equation}
+\vec A^\mathrm{T}_n\mathbf{T}\vec{A}_m = 0
+\label{eq:Aortho}
+\end{equation}
+als eine Art Orthogonalitätsrelation gilt. Betrachten wir nun eine
 Schwingung, also ein festes $n=m$. Aus physikalischen Gründen ist die
 kinetische Energie positiv (außer an den Umkehrpunkten der Bewegung). Das
 führt dazu, dass wir mit dem Realteil der Lösung der Bewegungsgleichung
@@ -440,8 +446,9 @@ wir alle Amplitudenvektoren $\vec A_n$ in eine einzige Matrix zusammenfassen:
 \mathbf{A} := \threeMatrix{A_{11}}{\dots}{A_{1s}}{\vdots}{\ddots}{\vdots}{A_{s1}}{\dots}{A_{ss}} = \left[\vec A_1\; \dots\;\vec A_s\right]\,.
 \label{eq:AMatrix}
 \end{equation}
-Nun können wir alle $s$ Gleichungen \eqref{eq:Anorm} (für alle $s$ Frequenzen
-$\omega_n$) in einer kompakten Matrixschreibweise fassen:
+Nun können wir alle $s$ Gleichungen \eqref{eq:Anorm} (für alle $s$
+Frequenzen $\omega_n$) sowie die Gleichungen \eqref{eq:Aortho} in einer
+kompakten Matrixschreibweise fassen:
 \begin{equation}
 \mathbf{A}^\mathrm{T} \mathbf{T} \mathbf{A} = \mathbf{1}
 \label{eq:Tdiag}
@@ -451,7 +458,8 @@ Matrix
 \begin{equation}
 \mathbf{\Omega} := \diag\left(\omega_1, \dots,\omega_s\right)
 \end{equation}
-ein, können wir wieder für alle $s$ Frequenzen kompakt in einer Matrixgleichung
+ein, können wir die Gleichungen \eqref{eq:VGl1} beziehungsweise \eqref
+{eq:VGl2} für alle $s$ Frequenzen kompakt als Matrixgleichung
 \begin{equation}
 \mathbf{V}\mathbf{A} = \mathbf{T}\mathbf{A}\mathbf{\Omega}^2
 \end{equation}
@@ -467,7 +475,7 @@ diagonalisieren.
 
 Die Matrix $\mathbf{A}$ hat interessante Eigenschaften: sie ist in unseren
 Koordinaten ähnlich einer ortogonalen Matrix. Wenn wir Gleichung
-\eqref{eq:AMatrix} von rechts mit $\mathbf{A}^{-1}$ multiplizieren, so erhalten
+\eqref{eq:Tdiag} von rechts mit $\mathbf{A}^{-1}$ multiplizieren, so erhalten
 \begin{equation}
 \mathbf{A}^{-1} = \mathbf{A}^\mathrm{T}\mathbf{T}\,.
 \label{eq:Ainverse}
