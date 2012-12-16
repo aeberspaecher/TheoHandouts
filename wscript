@@ -3,7 +3,7 @@
 top = '.'
 out = "build"
 
-handouts = ['Chaos', 'Mechanik-GreensFkt', 'Mechanik-Schwingungen',
+handouts = ['Chaos', 'Mechanik-GreensFkt', 'Mechanik-Schwingungen', 'Mechanik-Kontinua',
             'EDyn-Vektoranalysis', 'EDyn-PDE', 'EDyn-Fourieranalysis']
 
 def configure(conf):
