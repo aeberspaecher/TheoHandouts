@@ -12,8 +12,8 @@ def configure(conf):
 def build(bld):
     bld(
             features = 'tex',
-            type     = 'pdflatex', # pdflatex or xelatex
-            source   = 'EDyn-Vektoranalysis.tex', # mandatory, the source
-            outs     = 'pdf', # 'pdf' or 'ps pdf'
-            prompt   = 0 # 0 for the batch mode
+            type     = 'pdflatex',  # pdflatex or xelatex
+            source   = 'EDyn-Vektoranalysis.tex',  # mandatory, the source
+            outs     = 'pdf',  # 'pdf' or 'ps pdf'
+            prompt   = 0  # 0 for the batch mode
         )

@@ -30,6 +30,16 @@ Einfach
 
 im Hauptverzeichnis tippen.
 
+Neu
+---
+
+Waf steht für builds zur Verfügung::
+
+  ./waf configure
+  ./waf
+
+Das erzeugt PDFs im build-Verzeichnis ``build``.
+
 Abhängigkeiten
 --------------
 

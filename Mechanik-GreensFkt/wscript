@@ -9,17 +9,11 @@ def configure(conf):
     if not conf.env.PDFLATEX:
         conf.fatal("Could not find pdflatex")
 
-def build(ctx):
-    ctx(
+def build(bld):
+    bld(
             features = 'tex',
-            type     = 'pdflatex', # pdflatex or xelatex
-            source   = 'Mechanik-GreensFkt.tex', # mandatory, the source
-            outs     = 'pdf', # 'pdf' or 'ps pdf'
-            prompt   = 0 # 0 for the batch mode
+            type     = 'pdflatex',  # pdflatex or xelatex
+            source   = 'Mechanik-GreensFkt.tex',  # mandatory, the source
+            outs     = 'pdf',  # 'pdf' or 'ps pdf'
+            prompt   = 0  # 0 for the batch mode
         )
-
-    ctx.add_post_fun(post)  # copy PDF
-
-def post(ctx):
-    print("Copy PDF file to top directory")
-    ctx.exec_command("cp {0}/Mechanik-GreensFkt.pdf".format(out) + " {0}".format(top))
