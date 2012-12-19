@@ -16,7 +16,7 @@ def build(ctx):
             source   = 'talk.tex',  # mandatory, the source
             outs     = 'pdf',  # 'pdf' or 'ps pdf'
             deps     = 'style.sty',  # dependence
-            prompt   = 1  # 0 for the batch mode
+            prompt   = 0  # 0 for the batch mode
         )
 
     # add manual dependency such that the presentation is rebuilt if the style
