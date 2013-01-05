@@ -22,18 +22,7 @@ fertiggeschrieben.
 PDFs erzeugen
 -------------
 
-Einfach
-
-::
-
-  make
-
-im Hauptverzeichnis tippen.
-
-Neu
----
-
-Waf steht für builds zur Verfügung::
+Für builds wird das Tool waf benutzt::
 
   ./waf configure
   ./waf
