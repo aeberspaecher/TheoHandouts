@@ -35,16 +35,16 @@
 \begin{abstract}
 Als Ergänzung zur Vorlesung wird kurz vorgestellt, wie sich eine dynamische
 Theorie kontinuierlicher Systeme als Grenzfall einer Theorie diskreter
-Systeme ergibt. Wir wollen Anhand von Beispielen die Grundzüge des
+Systeme ergibt. Wir wollen anhand von Beispielen die Grundzüge des
 Formalismusses sogenannter \emph{Feldtheorien} kennenlernen.\\[0.5ex]
 Literatur: Scheck \cite{Scheck} und José\&Saletan \cite{JoseSaletan}
 \end{abstract}
 
-\section{Einleitung - Mechanik diskreter Systeme}
+\section{Einleitung - Mechanik diskreter Systeme $\to$ Mechanik der Kontinua}
 
 Die Mechanik diskreter Systeme, wie sie bisher in der Vorlesung besprochen
-worden ist, kommt immer mit \emph{endlich} vielen Freiheitsgraden aus. Die
-\emph{dynamischen Variable} sind die Größen $q_i(t)$ und $\dot{q}_i(t)$
+wurde, kommt immer mit \emph{endlich} vielen Freiheitsgraden aus. Die
+\emph{dynamischen Variablen} sind die Größen $q_i(t)$ und $\dot{q}_i(t)$
 (beziehungsweise $p_i(t)$ statt $\dot{q}_i(t)$ in der Hamilton-Mechanik).
 Die Zeit $t$ spielte die Rolle eines Parameters. Denken wir beispielsweise
 an die große Teilchenzahl in einem Festkörper, so erscheint es angemessen,
@@ -62,9 +62,9 @@ verstehen. Die Diskussion ist in wesentlichen Teilen Schecks Buch
 
 Wir betrachten $N$ harmonisch gekoppelte identische Federschwinger, die
 entlang der Kette schwingen können (longitudinale Schwingungen):
-
-TODO: Bild!
-
+\begin{center}
+    \includegraphics[width=0.5\textwidth]{Kette.pdf}
+\end{center}
 Die Auslenkungen aus den jeweiligen Ruhelagen $x_{0,i}$ bezeichnen wir mit
 \begin{equation}
 \eta_i(t) = x_i(t) - x_{0,i}\,.
@@ -75,7 +75,7 @@ T &= \sum\limits_{i=1}^{N} \frac{1}{2}m\dot{\eta}_{i}^2\,,\\
 V &= \sum\limits_{i=1}^{N} \frac{1}{2}D\left(\eta_{i+1}-\eta_i\right)^2-\frac{1}{2}D\left(\eta_1^2+\eta_N^2\right)\,.
 \end{align}
 Die letzten Terme in der potentiellen Energie entsprechen dabei dem Anfang
-and dem Ende der Kette. Nutzen wir als Randbedingung, dass die äußeren Massen
+und dem Ende der Kette. Nutzen wir als Randbedingung, dass die äußeren Massen
 fest mit der Wand verbunden sind und in der Ruhelage verharren, so können wir
 für die potentielle Energie
 \begin{equation}
@@ -98,16 +98,16 @@ erst den Übergang zum schwingenden Kontinuum vollziehen.
 Man beachte, welchen Status die einzelnen Größen im Rahmen dieser
 Punktmechanik haben: wir haben mit $N$ abzählbaren Freiheitsgraden zu tun.
 Die $\eta_j$ und die Geschwindigkeiten $\dot\eta_j$ (oder die Impulse $p_j$)
-sind die dynamischen Variable.
+sind die dynamischen Variablen.
 
-\subsection{Übergang zum Kontinuum}
+\subsection{Übergang zum Kontinuum und der Begriff des \emph{Feldes}}
 
 Der Übergang zum Kontinuum bedeutet, $N\to\infty$ gehen zu lassen. Der
 Abstand $d$ zwischen zwei Massen geht dann $\to 0$. Der Übergang soll derart
 vollzogen werden, dass die Massendichte $\rho$ konstant bleibt.
 
-Das interessante Größen ist dann die Auslenkung $\phi(x, t)$. Da $x$ und $t$
-kontinuierliche Größen sind, haben wir es mit den Auslenkungen $\phi$ mit
+Die interessante Größe ist dann die Auslenkung $\phi(x, t)$. Da $x$ und $t$
+kontinuierliche Größen sind, haben wir es bei den Auslenkungen $\phi$ mit
 \emph{unendlich vielen} Freiheitsgraden zu tun! Sowohl die Zeit $t$ als auch
 der Ort haben dann die Rolle von Parametern. Die Größe $\phi$ nennt man ein
 \emph{Feld}. Unser Ziel ist es, den bekannten Lagrange-Formalismus für
@@ -123,7 +123,7 @@ Die Zeitableitungen
 \label{eq:ZeitAbl}
 \end{equation}
 brauchen wir später. Die Differenzen $\eta_{j+1}-\eta_j$ aus der
-Bewegunsgleichung \eqref{eq:BewGl} schreiben wir als Ableitung
+Bewegungsgleichung \eqref{eq:BewGl} schreiben wir als Ableitung
 \begin{align}
 \eta_{j+1}-\eta_j &=\phi\left(x=\frac{(j+1)L}{N+1}, t\right) - \phi\left(x=\frac{jL}{N+1}, t\right)\nonumber\\
 &=\left.\firstpderiv{\phi}{x}\right\vert_{x=jd+d/2}d\,.
@@ -178,7 +178,7 @@ m\omega_0^2 (\eta_{j+1}-\eta_j)^2 &= \rho d \omega_0^2\left(\firstpderiv{\phi}{x
 &= \rho d v^2 \left(\firstpderiv{\phi}{x}\right)^2\,.
 \end{align}
 Ersetzen wir noch die Zeitableitung nach Gleichung \eqref{eq:ZeitAbl}, so
-bekommen als Lagrange-Funktion
+bekommen wir als Lagrange-Funktion
 \begin{equation}
 L = \int\!\dd x\,\underbrace{\frac{\rho}{2}\left[\left(\firstpderiv{\phi}{t}\right)^2 - v^2\left(\firstpderiv{\phi}{x}\right)^2 \right]}_{=:\LD}\,.
 \label{eq:LDKette}
@@ -226,7 +226,7 @@ Dann fordern wir, dass für physikalische Felder die Wirkung extremal ist:
 Im Folgenden bezeichnen Punkte zeitliche und Striche räumliche Ableitungen.
 Wir fordern von der Variation
 \begin{equation}
-\delta S[\phi] = \int\limits_{\ti}^{\tf}\!\dd t\int\!\dd x\,\left[\firstpderiv{\LD}{\phi}\delta\phi+\firstpderiv{\LD}{\dot{\phi}}\delta\dot{\phi}+\firstpderiv{\LD}{\phi'}\delta \phi' \right]
+\delta S[\phi] = \int\limits_{\ti}^{\tf}\!\dd t\int\!\dd x\,\left[\firstpderiv{\LD}{\phi}\delta\phi+\firstpderiv{\LD}{\dot{\phi}}\delta\dot{\phi}+\firstpderiv{\LD}{\phi'}\delta \phi' \right]\,,
 \end{equation}
 dass Sie an Anfangs- und Endzeitpunkten $\ti$ beziehungsweise $\tf$
 verschwindet. Außerdem sollen Variation und Ableitung vertauschen:
@@ -235,10 +235,10 @@ verschwindet. Außerdem sollen Variation und Ableitung vertauschen:
 \delta\phi' &= \partial_x\delta\phi\,.
 \end{align}
 Nun fordern wir zusätzlich noch, dass die Variation auch auf den Rändern des
-$x$-Integrations\-in\-ter\-valls verschwindet. Dann schieben wir mit Hilfe von
-partieller ($x$-)Integration die Ableitungen in den Ausdrücken
-$\partial_t\delta\phi$ und $\partial_x\delta\phi$ auf die Ableitungen der
-Lagrange-Dichte und erhalten -- nachdem wir Randterme Null gesetzt haben
+$x$-Integrations\-in\-ter\-valls verschwindet. Dann schieben wir mit Hilfe
+von partieller ($x$-)Integration die Ableitungen in den Ausdrücken
+$\partial_t\delta\phi$ und $\partial_x\delta\phi$ auf die Lagrange-Dichte
+und erhalten -- nachdem wir die Randterme Null gesetzt haben
 \begin{equation}
 \delta S[\phi] = \int\limits_{\ti}^{\tf}\!\dd t\int\!\dd x\,\left[\firstpderiv{\LD}{\phi} - \firstpderiv{}{t}\firstpderiv{\LD}{\dot{\phi}} - \firstpderiv{}{x}\firstpderiv{\LD}{\phi'} \right]\delta{\phi}\,.
 \end{equation}
@@ -263,7 +263,7 @@ Die anderen benötigten Terme für die Euler-Lagrange-Gleichung sind
 -\firstpderiv{}{t}\firstpderiv{\LD}{(\partial_t\phi)} &= -\rho \firstpderiv{}{t}\partial_t\phi = -\rho \partial_t^2\phi\,.
 \end{align}
 Setzen wir das alles in die Euler-Lagrange-Gleichung \eqref{eq:ELG} ein, so
-erhalten erneut die Wellengleichung \eqref{eq:Wellengleichung}.
+erhalten wir  erneut die Wellengleichung \eqref{eq:Wellengleichung}.
 
 \subsection{Verallgemeinerung auf mehr Raumdimensionen und mehrere Felder}
 
@@ -285,9 +285,9 @@ Vektors
 \begin{equation}
 x = \left(x^0, x^1, x^2, x^3\right) = (t, x, y, z)
 \end{equation}
-auffassen\footnote{Um die selben Einheiten für die Zeitkomponente und die
-Ortskomponente zu benutzen könnten wir die Zeit nach mit einer
-Geschwindigkeit $c$ multiplizieren. Wir setzen diese hier $c=1$.}. Im
+auffassen.\footnote{Um die selben Einheiten für die Zeitkomponente und die
+Ortskomponenten zu benutzen, könnten wir die Zeit noch mit einer
+Geschwindigkeit $c$ multiplizieren. Wir setzen diese hier $c=1$.} Im
 Folgenden sollen griechische Indizes über die vier Werte von $0$ bis $3$
 laufen.
 
@@ -319,7 +319,7 @@ schreiben. Der erste Term ist dabei eine Summe über $\mu = 0\dots3$.
     L \to L' = L + \firstderiv{f}{t}\,,
     \end{equation}
     was in der Punktteilchenmechanik auf identische Bewegungsgleichungen
-    führte können wir in einer Feldtheorie eine Vierer-Divergenz addieren:
+    führte, können wir in einer Feldtheorie eine Vierer-Divergenz addieren:
     \begin{equation}
     \LD \to \LD' = \LD + \partial_\nu f^\nu(x^\mu)\,,
     \end{equation}
@@ -328,7 +328,7 @@ schreiben. Der erste Term ist dabei eine Summe über $\mu = 0\dots3$.
     \item Wie in der Punktteilchenmechanik gibt es auch eine
     feldtheoretische Version des Noether-Theorems. Ist $\LD$ invariant unter
     einer kontinuierlichen Symmetrie, so existieren Kontinuitätsgleichungen
-    für Flußgrößen.
+    für Flussgrößen.
 \end{itemize}
 
 \subsection{*Hamiltonsche Formulierung -- ein Anriss}
@@ -336,16 +336,16 @@ schreiben. Der erste Term ist dabei eine Summe über $\mu = 0\dots3$.
 Wenn eine Lagrange-Dichte $\LD$ nicht von der Feldfunktion $\psi_I$ abhängt,
 dann lautet die $I$-te Euler-Lagrange-Gleichung (diejenige für Feld $\psi_I$)
 \begin{equation}
-\partial_\mu \firstpderiv{\LD}{(\partial_\mu\LD)} = 0\,.
+\firstpderiv{}{x^\mu} \firstpderiv{\LD}{(\partial_\mu\LD)} = 0\,.
 \end{equation}
-Diese vier (Summenkonvention!) Gleichungen zusammen beschreiben einen Fluß,
+Diese vier (Summenkonvention!) Gleichungen zusammen beschreiben einen Fluss,
 für den die Kontinuitätsgleichung
 \begin{equation}
 \partial_0 j^0 + \nabla \cdot\vec j = 0
 \end{equation}
 gilt. Die Größe $j^\mu=(j^0, \vec j)$ ist hierbei
 \begin{equation}
-j^\mu = \firstpderiv{}{x^\mu} \firstpderiv{\LD}{(\partial_\mu\psi_I)}\,.
+j^\mu = \firstpderiv{\LD}{(\partial_\mu\psi_I)}\,.
 \end{equation}
 Eine analoge Situation hat man in der Punktteilchenmechanik, wenn $L$ nicht
 von $q_i$ abhängt. Der zu $q_i$ konjugierte Impuls $p_i = \partial
@@ -375,9 +375,9 @@ Gleichungen der Feldtheorie sei auf die Literatur verwiesen \cite
 
 Ein System aus $N$ gekoppelten Pendeln der Länge $l$ und Masse $m$ soll
 transversal zur Verbindungslinie schwingen können.
-
-TODO: Bild
-
+\begin{center}
+    \includegraphics[width=0.375\textwidth]{Pendel.pdf}
+\end{center}
 Die einzelnen Pendel seien untereinander auf einem Torsionstab so gekoppelt,
 dass das zwischen dem $i$-ten und dem $i+1$-ten Pendel das Drehmoment
 $-k(\varphi_{i+1} - \varphi_i)$ wirkt. Wir stellen uns wie gehabt an den
@@ -391,7 +391,7 @@ und für die potentielle Energie
 V = mgl\sum\limits_{j=0}^{N+1}(1-\cos(\varphi_j)) + \frac{1}{2}k\sum\limits_{j=0}^{N}\left(\varphi_{j+1} - \varphi_j\right)^2\,.
 \end{equation}
 Die erste Summe in $V$ beschreibt das Potential durch die (äußere)
-Gravitationskraft, die zweiten Summe das Potential durch die (internen)
+Gravitationskraft, die zweite Summe das Potential durch die (internen)
 harmonischen Torsionskräfte. Die Euler-Lagrange-Gleichung für ein inneres
 Pendel $j$ ist dann
 \begin{equation}
@@ -409,8 +409,8 @@ Grenzübergang $N\to\infty$, $d\to 0$ erhalten wir auch hier wieder ein
 kontinuierliches System. Die Winkel $\varphi_j$ werden durch die Feldgrößen
 $\varphi(x,t)$ ersetzt. Für mehr Details zum Übergang vergleiche \cite
 {Scheck}. Mit $v^2:=\omega_0^2 d^2$ erhalten wir die
-``Sinus-Gordon-Gleichung'' oder englisch die ``Sine-Gordon equation''
-\footnote{Ein Reim auf die bekannte Klein-Gordon-Gleichung}
+``Sinus-Gordon-Gleichung'' oder englisch die ``Sine-Gordon
+equation''\footnote{Ein Reim auf die bekannte Klein-Gordon-Gleichung}
 \begin{equation}
 \partial_t^2\varphi - v^2\partial_x^2\varphi + \omega_1^2\sin(\varphi) = 0\,.
 \end{equation}
@@ -428,9 +428,14 @@ Schrödingerfeld
 \LD =\frac{\ii\hbar}{2}\left[\psi^*\dot\psi - \dot{\psi}^*\psi \right] - \frac{\hbar^2}{2m}\nabla\psi^*\cdot\nabla\psi - V(\vec r)\psi^*\psi
 \end{equation}
 ableiten. Wir haben es hier mit einem \emph{komplexen} Feld $\psi$ zu tun.
-Dieses lässt sich -- analog zur Zerlegung in (von einander unabhängige)
-Real- und Imaginärteile -- durch die beiden unabhängigen Felder $\psi$ und
-$\psi^*$ behandeln. Wir leiten nun die Euler-Lagrange-Gleichung für das Feld
+Dieses lässt sich -- analog zur Zerlegung $\psi = \Real\psi + \ii\Imag\psi$
+in (von einander unabhängige) Real- und Imaginärteile -- durch die beiden
+unabhängigen Felder $\psi$ und $\psi^*$ behandeln. Es gilt selbstverständlich
+\begin{align*}
+\Real\psi &= \frac{1}{2}\left(\psi + \psi^*\right)\,,\\
+\Imag\psi &= \frac{1}{2}\left(\psi - \psi^*\right)\,.
+\end{align*}
+Wir leiten nun die Euler-Lagrange-Gleichung für das Feld
 $\psi^*$ ab. Es ist
 \begin{align*}
 \firstpderiv{\LD}{(\psi^*)} &= \frac{\ii\hbar}{2}\dot\psi-V(\vec r)\,,\\
@@ -443,7 +448,7 @@ Damit ist die Euler-Lagrange-Gleichung
 \end{equation}
 identisch der Schrödinger-Gleichung! Man beachte, dass damit nicht die
 komplette Quantenmechanik abgeleitet ist -- diese besteht neben der
-Schrödingergleichung auch noch aus der Interpretation, die wir aus im Rahmen
+Schrödingergleichung auch noch aus der Interpretation, die wir im Rahmen
 dieser Fingerübung nicht erhalten\dots
 
 \bibliographystyle{ieeetr}
