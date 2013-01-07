@@ -300,6 +300,7 @@ Lagrange-Dichte ist also kompakt geschrieben
 Für jedes Feld $\phi_I$ können wir dann als Euler-Lagrange-Gleichung
 \begin{equation}
 \firstpderiv{}{x^\mu}\firstpderiv{\LD}{(\partial_\mu\phi_I)} - \firstpderiv{\LD}{\phi_I} = 0
+\label{eq:ELG}
 \end{equation}
 schreiben. Der erste Term ist dabei eine Summe über $\mu = 0\dots3$.
 
@@ -410,7 +411,8 @@ kontinuierliches System. Die Winkel $\varphi_j$ werden durch die Feldgrößen
 $\varphi(x,t)$ ersetzt. Für mehr Details zum Übergang vergleiche \cite
 {Scheck}. Mit $v^2:=\omega_0^2 d^2$ erhalten wir die
 ``Sinus-Gordon-Gleichung'' oder englisch die ``Sine-Gordon
-equation''\footnote{Ein Reim auf die bekannte Klein-Gordon-Gleichung}
+equation''\footnote{Ein Reim auf die bekannte Klein-Gordon-Gleichung, einer
+relativistischen Schrödingergleichung (für Spin-0-Teilchen)}
 \begin{equation}
 \partial_t^2\varphi - v^2\partial_x^2\varphi + \omega_1^2\sin(\varphi) = 0\,.
 \end{equation}
@@ -435,19 +437,19 @@ unabhängigen Felder $\psi$ und $\psi^*$ behandeln. Es gilt selbstverständlich
 \Real\psi &= \frac{1}{2}\left(\psi + \psi^*\right)\,,\\
 \Imag\psi &= \frac{1}{2}\left(\psi - \psi^*\right)\,.
 \end{align*}
-Wir leiten nun die Euler-Lagrange-Gleichung für das Feld
-$\psi^*$ ab. Es ist
+Wir leiten nun die Euler-Lagrange-Gleichung für das Feld $\psi^*$ ab. Es ist
 \begin{align*}
-\firstpderiv{\LD}{(\psi^*)} &= \frac{\ii\hbar}{2}\dot\psi-V(\vec r)\,,\\
+\firstpderiv{\LD}{(\psi^*)} &= \frac{\ii\hbar}{2}\dot\psi-V(\vec r)\psi\,,\\
 -\firstpderiv{}{t}\firstpderiv{\LD}{(\dot\psi^*)} &= \frac{\ii\hbar}{2}\dot\psi\,,\\
--\nabla\firstpderiv{\LD}{(\nabla\psi^*)} &= +\frac{\hbar^2}{2m}\nabla\cdot\nabla\psi = +\frac{\hbar^2}{2m}\Delta\psi\,.
+-\nabla\cdot\firstpderiv{\LD}{(\nabla\psi^*)} &= +\frac{\hbar^2}{2m}\nabla\cdot\nabla\psi = +\frac{\hbar^2}{2m}\Delta\psi\,.
 \end{align*}
-Damit ist die Euler-Lagrange-Gleichung
+Die Summe dieser Terme ergibt mit der Euler-Lagrange-Gleichung \eqref
+{eq:ELG} gerade
 \begin{equation}
-\ii\hbar \dot\psi =\left[ -\frac{\hbar^2}{2m}\Delta + V(\vec r)\right]\psi
+\ii\hbar \dot\psi =\left[ -\frac{\hbar^2}{2m}\Delta + V(\vec r)\right]\psi\,,
 \end{equation}
-identisch der Schrödinger-Gleichung! Man beachte, dass damit nicht die
-komplette Quantenmechanik abgeleitet ist -- diese besteht neben der
+die Schrödinger-Gleichung! Man beachte, dass damit nicht die komplette
+Quantenmechanik abgeleitet ist -- diese besteht neben der
 Schrödingergleichung auch noch aus der Interpretation, die wir im Rahmen
 dieser Fingerübung nicht erhalten\dots
 
