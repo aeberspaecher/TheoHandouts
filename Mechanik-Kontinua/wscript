@@ -15,5 +15,5 @@ def build(bld):
             type     = 'pdflatex',  # pdflatex or xelatex
             source   = 'Mechanik-Kontinua.tex',  # mandatory, the source
             outs     = 'pdf',  # 'pdf' or 'ps pdf'
-            prompt   = 1  # 0 for the batch mode
+            prompt   = 0  # 0 for the batch mode
         )
