@@ -28,11 +28,11 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Um eventuell vorhandene Lücken in der Rechenkunst zu schließen wollen wir
-kurz partielle Differentialgleichungen einführen und über Lösungstechniken
-sprechen. Ganz ohne jede mathematische Strenge werden so die wichtigsten
-Begriffe kurz angerissen. Die Methode der Separation der Variablen wird etwas
-detaillierter besprochen.\\[0.5ex]
+Um eventuell vorhandene Lücken in der Rechenkunst zu schließen wollen wir kurz
+partielle Differentialgleichungen einführen und über Lösungstechniken sprechen.
+Ganz ohne jede mathematische Strenge werden so die wichtigsten Begriffe kurz
+angerissen. Die Methode der Separation der Variablen wird anhand von Beispielen
+etwas detaillierter besprochen.\\[0.5ex]
 Literatur: Farlow \cite{Farlow} und Arfken\&Weber \cite{Arfken}.
 \end{abstract}
 
@@ -93,8 +93,8 @@ Es gibt eine Vielzahl von Möglichkeiten, partielle Differentialgleichungen zu k
     Taucht neben der gesuchten Funktion (und deren Ableitungen) kein
     weiterer (unabhängiger) Term auf, so nennen wir die Gleichung \emph
     {homogen}, andernfalls ist die Gleichung \emph{inhomogen}. Mit dem
-    Differentialoperator $\mathcal{L}$ und der Funktion $f$ schreiben wir
-    also \[\mathcal{L}\, f = g\,,\] was für $g=0$ eine
+    Differentialoperator $\mathcal{D}$ und der Funktion $f$ schreiben wir
+    also \[\mathcal{D}\, f = g\,,\] was für $g=0$ eine
     homogene Gleichung ist und für $g\neq 0$ eine inhomogene Gleichung
     darstellt. Die Poissongleichung \eqref{eq:Poisson} ist beispielsweise
     eine inhomogene Gleichung, falls Ladungen vorhanden sind. Die für
@@ -117,12 +117,12 @@ Es gibt eine Vielzahl von Möglichkeiten, partielle Differentialgleichungen zu k
      \left[-\frac{\hbar^2}{2m}{\Delta} + V(\vec{r})  + {4\pi\hbar^2a_s\over m}\vert\psi(\vec{r})\vert^2\right]\psi(\vec{r})=\mu\psi(\vec{r})\,,
     \end{equation}
     die Bose-Einstein-Kondensate beschreibt.\footnote{In diesen kommt in der
-    Vielteilchen-Schrödingergleichung neben dem Fallenpotential $V$ noch
-    eine Art Hartkugel-Wechselwirkung $c\delta^3(\vec r - \vec r')$ hinzu.
-    Aus dieser resultiert in einer sog. ``mean field'' Beschreibung die
-    Nichtlinearität $\abs{\psi(\vec r)}^2$.} Die Hamilton-Jacobi-Gleichung
-    \eqref{eq:HJ} ist ebenfalls nichtlinear (die Hamiltonfunktion ist
-    quadratisch in $p$!).
+    Vielteilchen-Schrödingergleichung neben dem Fallenpotential $V$ noch eine
+    Art Hartkugel-Wechselwirkung $c\delta^3(\vec r - \vec r')$ hinzu. Aus
+    dieser resultiert in einer sog. ``mean field'' Beschreibung die zur
+    Teilchendichte proportionale Nichtlinearität $\abs{\psi(\vec r)}^2$.} Die
+    Hamilton-Jacobi-Gleichung \eqref{eq:HJ} ist ebenfalls nichtlinear (die
+    Hamiltonfunktion ist quadratisch in $p$!).
 \end{description}
 
 \subsection{Randbedingungen}
@@ -134,14 +134,17 @@ Werden zu einer (linearen) Differentialgleichung mehrere Lösungen gefunden,
 so müssen die Lösungen so superponiert werden, dass die Randbedingungen
 erfüllt sind.
 
+\subsubsection{Typen von Problemen}
+
 Man unterscheidet oft zwischen
 \begin{description}
     \item[Randwertproblemen] Bei diesen Problemen werden die gesuchte Funktion (oder deren Ableitungen) auf dem Rand des Definitionsgebietes vorgegeben.
     \item[Anfangswertproblem] Ist für eine Variable der Definitionsbereich
-    offen (zum Beispiel die Zeit $t\in[0; +\infty)$, so spricht man für
+    offen (zum Beispiel die Zeit $t \in [0; +\infty)$, so spricht man für
     einen am Rand vorgegebenen ``Anfangswert'' auch von einem
     Anfangswertproblem.
 \end{description}
+Kombiniert spricht man dann von einem ``Anfangs-Randwertproblem''.
 
 \subsubsection{Typen von Randbedingungen}
 
@@ -160,16 +163,17 @@ Es werden auch verschiedene Typen von Randbedingungen unterschieden. Gängig sin
 Etwas exotischer sind sicherlich
 \begin{description}
     \item[Cauchy-Randbedingungen]
-    Cauchy-Randbedingungen mischen Neumann- und Dirichlet-Randbedingungen so,
-    dass für die gesuchte Funktion $f$ auf dem Rand
+    Cauchy-Randbedingungen mischen Neumann- und
+    Dir\-ich\-let-Rand\-be\-ding\-ung\-en so, dass für die gesuchte Funktion $f$ auf
+    dem Rand
     \[f(\vec r \in \text{Rand}) = g(\vec r)\quad\text{und}\quad\dn f(\vec r\in \text{Rand}) = h(\vec r)\]
     gelten muss.
     \item[Robin-Randbedingungen]
-    Robin-Randbedingungen kombinieren Neumann- und Dirichlet-Randbedingungen in
+    Robin-Randbedingungen kombinieren Neumann- und Dir\-ich\-let-Rand\-be\-ding\-ung\-en in
     \emph{einer} Gleichung:
     \[a f(\vec r \in \text{Rand}) + b \dn f(\vec r \in \text{Rand}) = g\,,\]
     wobei $a, b$ und $g$ beliebige auf dem Rand definierte Funktionen sein dürfen.
-    
+
 \end{description}
 
 
@@ -259,7 +263,7 @@ Diese ``Anfangs-Randwertaufgabe'' lösen wir nun mit dem Separationsansatz
 \begin{equation}
 \psi(x,t) = \phi(x)\tau(t)\,,
 \end{equation}
-in dem wir Orts- und Zeitabhängigkeit separieren.
+mit dem wir Orts- und Zeitabhängigkeit separieren.
 
 Einsetzen des Ansatzes in die Differentialgleichung führt auf
 \begin{equation}
@@ -396,7 +400,7 @@ Der Separationsansatz $\phi = \phi(r,\theta) = R(r)\Theta(\theta)$ führt auf
 \begin{equation}
 \Theta R'' + \frac{1}{r}\Theta R' + \frac{1}{r^2} R\Theta'' = 0\, ,
 \end{equation}
-oder -- nach Multiplikation mit $r^2/\Theta R$, auf
+oder -- nach Multiplikation mit $r^2/\Theta R$ auf
 \begin{equation}
 \underbrace{r^2 \frac{R''}{R} + r\frac{R'}{R}}_{=+\alpha^2} = - \underbrace{\frac{\Theta''}{\Theta}}_{=-\alpha^2}\,.
 \end{equation}
